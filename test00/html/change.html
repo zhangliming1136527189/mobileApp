@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no"/>
+    <title>NC百分百</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/font-icons.css" />
+    <link rel="stylesheet" href="../css/mobiscroll.css">
+    <script src="../js/jquery-3.0.0.js"></script>
+    <script src="../js/mobiscroll.js"></script>
+    <script src="../js/layer/layer.js"></script>
+    <script src="../js/change.js"></script>
+</head>
+<body>
+<div id="change">
+    <input type="text" name="pk_support" hidden />
+    <ul class="list">
+        <li>
+            <span class="title">大区:</span>
+            <select name="areaname">
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="深圳">深圳</option>
+                <option value="浙江区">浙江区</option>
+                <option value="苏皖区">苏皖区</option>
+                <option value="华南区">华南区</option>
+                <option value="福建区">福建区</option>
+                <option value="华中区">华中区</option>
+                <option value="西南区">西南区</option>
+                <option value="西北区">西北区</option>
+                <option value="津冀区">津冀区</option>
+                <option value="东北区">东北区</option>
+                <option value="山东区">山东区</option>
+                <option value="央本-军工">央本-军工</option>
+            </select>
+        </li>
+        <li>
+            <span class="title">项目名称:</span>
+            <select name="projectname">
+
+            </select>
+        </li>
+        <li>
+            <span class="title">领域:</span>
+            <select name="field">
+                <option value="财务会计">财务会计</option>
+                <option value="增值税管理平台">增值税管理平台</option>
+                <option value="报表">报表</option>
+                <option value="合并报表">合并报表</option>
+                <option value="电子采购">电子采购</option>
+                <option value="产品成本">产品成本</option>
+                <option value="资金管理">资金管理</option>
+                <option value="资产管理">资产管理</option>
+                <option value="人力资本">人力资本</option>
+                <option value="全面预算">全面预算</option>
+                <option value="供应链">供应链</option>
+                <option value="利润中心会计">利润中心会计</option>
+                <option value="进出口">进出口</option>
+                <option value="应用平台">应用平台</option>
+                <option value="NC升迁">NC升迁</option>
+                <option value="CRM">CRM</option>
+                <option value="财务共享">财务共享</option>
+                <option value="电子销售">电子销售</option>
+                <option value="全渠道营销">全渠道营销</option>
+                <option value="医药">医药</option>
+                <option value="HR">HR</option>
+                <option value="ECM">ECM</option>
+                <option value="生产制造">生产制造</option>
+                <option value="交通公用">交通公用</option>
+                <option value="web开发">web开发</option>
+				<option value="房地产">房地产</option>
+				<option value="出版传媒">出版传媒</option>
+				<option value="效率环境">效率环境</option>
+				<option value="移动">移动</option>
+				<option value="轻量级平台">轻量级平台</option>
+                <option value="ESB">ESB</option>
+                <option value="电子发票和税务云">电子发票和税务云</option>
+                <option value="商业分析">商业分析</option> 
+                <option value="工程云">工程云</option>
+                <option value="税务云">税务云</option>
+                <option value="友空间">友空间</option>
+                <option value="采购云">采购云</option>
+                <option value="分析云">分析云</option>
+                <option value="渠道云">渠道云</option>
+                <option value="协同云">协同云</option>
+                <option value="移动审批">移动审批</option>
+                <option value="BQ8">BQ8</option>
+            </select>
+        </li>
+        <li>
+            <span class="title">录单人:</span>
+            <span class="text"></span>
+            <input type="text" value="" name="creatorname" hidden>
+        </li>
+        <li>
+            <span class="title">解决人:</span>
+            <input type="text" name="solvername" style="width:0.8rem;" placeholder="邮箱前缀">
+            <span class="tips" style="font-size:0.12rem;"></span>
+        </li>
+        <li>
+            <span class="title">修改人:</span>
+            <span class="text"></span>
+            <input type="text" name="modifier" hidden>
+            <input type="text" name="modifiername" hidden>
+        </li>
+        <li>
+            <span class="title supportname"></span>
+            <textarea name="supportname" id="" rows="2" placeholder="最多20个字（数字、字母均算一个字）"></textarea>
+        </li>
+        <li>
+            <span class="title description"></span>
+            <textarea name="description" rows="6" placeholder="最多400个字（数字、字母均算一个字）"></textarea>
+        </li>
+        <li>
+            <span class="title plantime">计划用时:</span>
+            <input type="text" min="1" max="99" name="plantime">
+            <span class="time"></span>
+        </li>
+        <li>
+            <span class="title">计划完成日期:</span>
+            <input type="text" name="finishtime" id="finishtime" readonly style="width: 1.8rem;">
+            <span class="close">×</span>
+        </li>
+        <li>
+            <span class="title">实际用时:<br/>(不含加班)</span>
+            <input type="text" min="1" max="99" name="actualtime">
+            <span class="time">小时</span>
+        </li>
+        <li>
+            <span class="title">加班用时:</span>
+            <input type="text" min="1" max="99" name="overtime">
+            <span class="time">小时</span>
+        </li>
+        <li>
+            <div class="img-upload">
+                <span class="title">上传图片:</span>
+                <div class="img-chose">
+
+                </div>
+                <input type="text" name="image1" value="" hidden />
+                <input type="text" name="image2" value="" hidden />
+                <input type="text" name="image3" value="" hidden />
+                <a href="#" class="ti-plus upload" id="upload"></a>
+                <p class="upload-notice">(注：只允许上传3张图片)</p>
+            </div>
+        </li>
+        <li>
+            <span class="button">提交</span>
+            <span class="delete">删除</span>
+        </li>
+    </ul>
+</div>
+<div id="footer">
+    <ul>
+        <li>
+            <a href="../index.html">
+                <i class="ti-menu-alt"></i><div>查看</div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="a_add">
+                <i class="ti-plus"></i><div>添加</div>
+            </a>
+        </li>
+        <li>
+            <a href="total.html">
+                <i class="ti-stats-up"></i><div>统计</div>
+            </a>
+        </li>
+        <li class="active">
+            <a href="mine.html">
+                <i class="ti-user"></i><div>我的</div>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>NC产品</title>
+		
+		<script>
+			function forSaleCard(hid) {
+				window.open("saleorder_card.html?hid=" + hid, '_self')
+			} 
+
+			$(document).ready(function(){
+
+				$('#test').find('input[type=checkbox]').bind('click', function(){
+	
+					$('#test').find('input[type=checkbox]').not(this).attr("checked", false);
+	
+				});
+
+			});
+			function focusTA(obj){
+				if(obj.value !=" 关键字"){
+					
+				}else{
+					obj.value = "";
+				}
+			}
+			
+			function blurTA(obj){
+				if(obj.value == ""){
+					obj.value = "关键字"
+				}else{
+					
+				}
+			}
+			
+		</script>
+		
+		<style>  
+		  
+		.ui-select {  
+		    text-align: center;  
+		    /* 加border只是为了看到边框*/  
+		    border:solid 1px;  
+		}  
+		.ui-select select {  
+		    position: absolute;  
+		    left: 0px;  
+		    top: 0px;  
+		    width: 100%;  
+		    height: 3em;  
+		    opacity: 0;  
+		}  
+		.search-box {
+		margin: 10px;
+		width: 50%;
+		padding: 0px 0px 5px 50px;
+		font-size: 20px;
+		color: #1f5350; 
+		border: none;
+		background-image: url(../images/search-btn.png);
+		background-repeat: no-repeat;
+		-webkit-background-size: 35px 35px;
+		-moz-background-size: 35px 35px;
+		-o-background-size: 35px 35px;
+		background-size: 35px 35px;
+		background-color: #7accc8;
+		-webkit-border-radius: 1px;
+	}
+		  
+		</style>  
+</head>
+ 
+	<body>                    
+		<form action="/fiwechat/SearchListQuery" method="POST" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+		<table  align="center" cellpadding="7px" cellspacing="1px" >
+				<!-- <caption><font color="red" size="6">我要找</font></caption> -->
+				<tr>
+					<td colspan="2" align="left" >
+						<input name="description" placeholder="关键字" class="search-box" type="text" onblur="blurTA(this)" onfocus="focusTA(this)"/>
+						<!-- <input type="submit" value="搜索" style="width:60px;height:30px"/> -->
+						<input type="submit" value="搜索" style="background:color(blue) no-repeat; width:60px;height:35px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>领域：</td>
+					<td>
+						<select name="field" style="width:138px;">
+							<option value="">全部</option>
+							<option value="财务会计">财务会计</option>
+							<option value="供应链">供应链</option>
+							<option value="企业报表">企业报表</option>
+							<option value="资金管理">资金管理</option>
+							<option value="资产管理">资产管理</option>
+							<option value="管理会计">管理会计</option>
+							<option value="合并报表">合并报表</option>
+							<option value="人力资本">人力资本</option>
+							<option value="进出口">进出口</option>
+							<option value="供应商管理">供应商管理</option>
+							<option value="其他">其他</option>
+						</select><span id="type_msg"></span>
+					</td>
+				</tr>
+				<!-- <tr>
+					<td>版本:</td>
+					<td>
+						<select name="version" style="width:138px;">
+							<option value="pm">全部</option>
+							<option value="NC6.5">NC6.5</option>
+							<option value="NC6.33">NC6.33</option>
+							<option value="NC5.7">NC5.7</option>
+							<option value="NC5.02">NC5.02</option>
+							<option value="NC5.6">NC5.6</option>
+							<option value="NC6.1">NC6.1</option>
+							<option value="NC6.3">NC6.3</option>
+						</select><span id="type_msg"></span>
+					</td>
+				</tr> -->
+				<tr>
+					<td>版本:</td>
+					<td>
+						<input type="checkbox" name="version" value="6.5"/>NC6.5&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="version" value="5.7"/>NC5.7<br/>
+						<input type="checkbox" name="version" value="6.33"/>NC6.33&nbsp;&nbsp;
+						<input type="checkbox" name="version" value="5.02"/>NC5.02<br/>
+						<input type="checkbox" name="version" value="6.1"/>NC6.1&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="version" value="5.6"/>NC5.6<br/>
+						<input type="checkbox" name="version" value="6.3"/>NC6.3
+					</td>
+				</tr>
+				<tr>
+					<td>主题类型:</td>
+					<td>
+						<input type="checkbox" name="type" value="功能特性"/>功能特性&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="type" value="应用方案"/>应用方案<br/>
+						<input type="checkbox" name="type" value="碎片化培训"/>碎片化培训
+						<input type="checkbox" name="type" value="最佳实践包"/>最佳实践包<br/>
+						<input type="checkbox" name="type" value="竞争分析"/>竞争分析&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="checkbox" name="type" value="微信应用"/>微信应用<br/>
+						<input type="checkbox" name="type" value="微信移动应用app"/>微信移动应用app
+					</td>
+				</tr> 
+				<!-- <tr>
+					<td>主题类型:</td>
+					<td>
+						<select name="version" style="width:138px;">
+						<option type="checkbox" name="type" value="功能特性"/>功能特性</option>
+						<option type="checkbox" name="type" value="应用方案"/>应用方案</option>
+						<option type="checkbox" name="type" value="碎片化培训"/>碎片化培训</option>
+						<option type="checkbox" name="type" value="最佳实践包"/>最佳实践包</option>
+						<option type="checkbox" name="type" value="竞争分析"/>竞争分析</option>
+						<option type="checkbox" name="type" value="移动应用app"/>移动应用app</option>
+						<option type="checkbox" name="type" value="微信应用"/>微信应用</option>
+						</select><span id="type_msg"></span>
+					</td>
+				</tr> -->
+				<tr>
+					<td>状态：</td>
+					<td>
+						<!-- <fieldset width="100px">  -->
+							<input type="checkbox" name="status" value="正式版"/>正式版&nbsp;&nbsp;
+							<input type="checkbox" name="status" value="试用版"/>试用版<br/>
+							<input type="checkbox" name="status" value="在研"/>在研&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox" name="status" value="预研"/>预研
+						<!-- </fieldset> -->
+					</td>
+				</tr>
+					<!-- <tr>
+					<td>关键字:</td>
+					<td><input type="text" name="description" style="width:150px; height:30px;"/></td>
+				</tr>
+				 <tr>
+					<td colspan="2" align="right">
+						&nbsp;
+					</td> 
+				</tr> 
+				
+				<tr>
+					<td colspan="2" align="center" >
+						<input type="submit" value="去找找" style="width:100px;height:40px"/>
+					</td>
+				</tr>
+ -->			</table>
+		</form>
+	</body>
+
+</html>

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>查看统计</title>
+	<link rel="stylesheet" href="../css/index.css" />
+	<link rel="stylesheet" href="../css/pcCaculate.css" />
+	<link rel="stylesheet" href="../css/font-icons.css" />
+
+</head>
+<body>
+<div id="header">
+	<span class="ti-user">用户：</span>
+	<span class="userName"></span>
+	<span class="enter">退出登录</span>
+	<a href="modifyPassword.html"><span  class="amend"> 修改密码</span></a>
+</div>
+<div id="tab" style="top:0;left:0;">
+    <ul>
+        <li class="active" name="show_bug" id="lookBug"><a href="##" class="BK">查看Bug</a></li><li name="show_need" id="lookNeeds"><a href="##">查看需求</a></li>
+    </ul>
+</div>
+<div id="studyMain" style="left:0;">
+		<div id="detailinfo">
+			<span class="backArea">集团</span>
+			<span class="backProject"></span>
+			<span class="field"></span>
+		</div>
+		<div id="figure">
+		     <div id="pie" style="display:none;">
+                <p id="pie-nav"><span class="pieButton">2016</span><span class="pieButton">2017</span><span class="pieButton active">2018</span></p>
+				<div id="pie-2016" style="display:none;"></div>
+				<div id="pie-2017" style="display:none;"></div>
+				<div id="pie-2018" ></div>
+		    </div>
+		    <div id="column"></div>
+		    <div id="table" style="display:none; ">
+               <div id="table-nav">
+					<span style="color:#00a2e8;font-weight: bold;margin-right: 10px;">2017</span>
+					<span style="color:#ff6427;font-weight: bold;">2018</span>
+				</div>
+				<div id="table-detail"></div>
+		    </div>
+		</div>
+		<div id="draw-type">
+			<ul>
+				<li id="column-type">柱状图</li>
+				<li id="pie-type">饼状图</li>				
+				<li id="table-type">列表</li>
+			</ul>
+		</div>
+</div>
+<div id="footer">
+	<ul>
+		<li >
+			<a href="../index.html">
+				<div>首页</div>
+			</a>
+		</li>
+		<li>
+			<a href="add.html">
+				<div>添加</div>
+			</a>
+		</li>
+		<li class="active chooseCol">
+			<a href="caculate.html"  class="active">
+				<div>统计</div>
+			</a>
+		</li>
+		<li>
+			<a href="mine.html">
+				<div>我的</div>
+			</a>
+		</li>
+		<li>
+			<a href="ranking.html">
+				<div>排行</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<script src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/caculate.js"></script>
+<script src="../js/layer/layer.js"></script>
+<script>
+	if(!localStorage.userid){
+		layer.alert('请先登录', {closeBtn:0,icon:7},function(index){
+			window.location.href = 'login.html';
+			layer.close(index)
+		}) ;
+	}
+	$('.enter').click(function(){
+		localStorage.token = '';
+		localStorage.userid = '';
+		window.location.href = 'login.html'
+	}) ;
+	$('.userName').html(localStorage.userName);
+	$("#tab li").on("click",function(){
+		var idName=$(this).attr("name");
+		$("div[id='"+idName+"']").show().siblings().hide();
+		$(this).children('a').addClass('BK');
+		$(this).siblings('li').children('a').removeClass('BK');
+	});
+
+
+</script>
+</body>
+</html>

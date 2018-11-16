@@ -1,0 +1,33 @@
+.spinner .decrease {
+	color: #00BDE8;
+}
+
+.spinner .decrease[disabled] {
+	color: gray;
+}
+
+.spinner .increase {
+	color: #00BDE8;
+}
+
+.spinner .increase[disabled] {
+	color: gray;
+}
+
+.add {
+	font-weight: bold;
+	color: #00BDE8;
+}
+
+.add[disabled] {
+	color: gray;
+}
+
+.min {
+	font-weight: bold;
+	color: #00BDE8;
+}
+
+.min[disabled] {
+	color: gray;
+}

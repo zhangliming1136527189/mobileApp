@@ -1,0 +1,121 @@
+ul,li{list-style:none;}
+#figure{
+    width: 100%;
+    overflow: hidden;
+}
+#tab{
+    padding-left:0;
+}
+#tab ul{
+    margin-left:0.16rem;
+}
+#tab li{
+    height:0.18rem;
+    line-height: 0.18rem;
+}
+#tab li a{
+    font-size:0.14rem;
+}
+#table{
+    position:relative;
+    width:100vw;
+}
+#table #categories{
+    table-layout:fixed;
+    width:95.5%;
+    margin-left:2%;
+    top:0.24rem;
+}
+#table #categories tr td{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.classify{
+    width:95.5%;
+    margin:0 0 -0.01rem 2%;
+    overflow: hidden;
+    box-sizing:border-box;
+}
+.classify table{
+    border-color:#fefefe;
+}
+.classify table tr{
+    text-align: center;
+}
+.classify_A,.classify_B,.classify_C,.classify_D,.classify_E,.classify_F{
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box;
+    background:#e9eaec;
+    color:#614848;
+    font-weight:bold;
+    overflow: hidden;
+    box-sizing:border-box;
+    vertical-align:top;
+}
+.classify_A{
+    width:20%;
+}
+.classify_B{
+    width:16%;
+}
+.classify_C{
+    width:16%;
+}
+.classify_D{
+    width:16%;
+}
+.classify_E{
+    width:16%;
+}
+.classify_F{
+    width:16%;
+}
+.tableMain{
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+}
+#table #categories tr{
+    text-align: center;
+    height: 0.3rem;
+}
+#table #categories tr td{
+    box-sizing:border-box;
+}
+#table #categories tr td:nth-of-type(1){
+    width:20%;
+}
+#table #categories tr td:nth-of-type(2){
+    width:16%;
+}
+#table #categories tr td:nth-of-type(3){
+    width:16%;
+}
+#table #categories tr td:nth-of-type(4){
+    width:16%;
+}
+#table #categories tr td:nth-of-type(5){
+    width:16%;
+}
+#table #categories tr td:nth-of-type(6){
+    width:16%;
+}
+#table-nav{
+    float:right;
+    padding-right:11px;
+}
+#table{
+    position:relative;
+}
+.tablerow{
+    width:20%;
+}
+#categories tr:nth-child(odd){
+    background:#fefefe;
+}
+#categories tr:nth-child(even){
+    background:#e9eaec;
+}
+
+
+

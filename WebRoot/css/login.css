@@ -1,0 +1,333 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+
+ul, li {
+    list-style: none;
+}
+
+#login-page {
+    width: 100%;
+    height: 100%;
+}
+
+#login-header {
+    width: 100%;
+    height: 20vh;
+    background: #0063af;
+    color: #fff;
+    font-size: 26px;
+    line-height: 150px;
+    text-align: center;
+}
+
+#login-content {
+    height: 80vh;
+    width: 100%;
+    background: #ededed;
+    position: relative;
+}
+
+#login-inner {
+    width: 600px;
+    height: 360px;
+    background: #fff;
+    position: absolute;
+    top: 15%;
+    margin-top:50px;
+    left: 30%;
+}
+
+#manage {
+    position:relative;
+    font-size: 20px;
+}
+
+#loginTips{font-size:16px;
+color:#d9534f;
+text-align:center;
+}
+#manage span{
+
+    height: 40px;
+
+}
+#manage span:nth-of-type(1){
+    width:40px;
+}
+#manage span:nth-of-type(1) img{
+    width: 40px;
+}
+
+#manage span:nth-of-type(2) {
+    height:40px;
+}
+
+#manage, #username-wrap, #password-wrap, #reset-password, #login-button {
+    margin-left: 15%;
+    margin-top: 20px;
+}
+
+#username-wrap, #password-wrap {
+    padding: 10px 0 10px 10px;
+    height: 30px;
+    width: 400px;
+    border: 1px solid #e1e1e1;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: #666 0px 0px 5px;
+    -moz-box-shadow: #666 0px 0px 5px;
+    box-shadow: #666 0px 0px 5px;
+}
+
+#username-wrap span {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#username-wrap #username {
+    height: 24px;
+    margin-top: -10px;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+ width:260px;
+
+}
+
+#password-wrap span {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#password-wrap #password {
+    font-size: 24px;
+    margin-top: -10px;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+ width:260px;
+}
+
+#forget-password {
+    padding-left:300px;
+    text-align: center;
+
+    margin-top: 5px;
+}
+#forget-password-inner{
+
+}
+#login-button {
+    margin-left: 35%;
+    height: 40px;
+    width: 160px;
+    background: #009fe9;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+#phoneTips {
+    font-size: 12px !important;
+    color: #F00;
+}
+
+#passwordTips {
+    font-size: 12px !important;
+    color: #F00;
+}
+
+/*找回密码页面*/
+#find-password-page {
+    width: 600px;
+    height: 360px;
+    background: #fff;
+    position: absolute;
+    top: 5%;
+    margin-top:50px;
+    left: 30%;
+}
+
+#find-header {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #437DD4;
+    font-size: 12px;
+}
+
+#find-header #find-title {
+    float: left;
+}
+
+#find-header #close {
+    float: right;
+}
+
+#find-steps {
+    background: #e0f0e9;
+    height: 40px;
+    width: 100%;
+}
+
+#find-steps ul {
+    width: 100%;
+}
+
+#border1, #border2, #border3 {
+    width: 175px;
+    border: 1px solid #999;
+    height: 1px;
+    display: inline-block;
+}
+
+#first-step {
+}
+
+#bottom-half {
+    font-size: 12px;
+    width: 100%;
+    height: 30px;
+}
+
+#bottom-half span {
+   height: 30px;
+   line-height:30px;
+       width: 100px;
+           float: left;
+	       margin-left:30px;
+	           height: 30px;
+		       display: inline-block;
+}
+
+#bottom-half span {
+}
+
+#find-direction {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#find-content {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#find-content-inner {
+    width: 100%;
+
+}
+
+#find-email-wrap {
+    margin-top: 10px;
+    margin-left:20%;
+}
+#find-username-wrap {
+    margin-top: 10px;
+    margin-left:20%;
+}
+#find-username{
+    width:250px;
+    height:22px;
+}
+#find-email{
+    width:250px;
+    height:22px;
+}
+#find-footer {
+    margin-top: 50px;
+    height: 40px;
+    width: 100%;
+    background: #bbb7b7;
+    position:absolute;
+    bottom:0px;
+}
+#button-list li {
+    float: right;
+    margin-left: 15px;
+    line-height: 30px;
+margin-top:3px;
+}
+
+.phoneTips, .emailTips {
+    font-size: 12px;
+    color: red;
+}
+#infoTips{
+    font-size:12px;
+    color:#d9534f;
+    text-align:center;
+}
+
+#time-direction{text-align:center;}
+#time-direction span{font-size:12px;}
+#identifying-wrap{width:100%;}
+#identifying-inner{margin-left:20%;margin-top:15px;}
+#identifying-code{height:22px;font-size:16px;width:220px;}
+#codeTips{font-size:12px;color:indianred;text-align:center;}
+.number{font-size:18px;color:#d9534f;}
+#retrieve span{margin-left:20%;text-align:center;border:1px solid #2e8ded;font-size:12px;}
+
+
+#identifying-inner{
+    margin-top:10px;
+}
+#identifying-footer {
+    margin-top: 50px;
+    height: 40px;
+    width: 100%;
+    background: #bbb7b7;
+    position:absolute;
+    bottom:0px;
+}
+#identifying-list li {
+    float: right;
+    margin-left: 15px;
+    line-height: 30px;
+margin-top:3px;
+}
+
+
+#new-password-wrap #new-password{width:220px;height:22px;}
+
+
+#confirm-password-wrap #confirm-password{width:220px;height:22px;}
+#reset-footer {
+    margin-top: 50px;
+    height: 40px;
+    width: 100%;
+    background: #bbb7b7;
+    position:absolute;
+    bottom:0px;
+}
+#reset-list li {
+    float: right;
+    margin-left: 15px;
+    line-height: 30px;
+ margin-top:3px;
+}
+
+#success-title{text-align: center;font-size:20px;margin-top:20px;color:#00a1ea;}
+#success-footer {
+    margin-top: 50px;
+    height: 30px;
+    width: 100%;
+    background: #bbb7b7;
+    position:absolute;
+    bottom:0px;
+}
+#success-list li {
+    float: right;
+    margin-left: 15px;
+    line-height: 30px;
+}
+#new-password-wrap{margin-top:40px;margin-left:150px;}
+#confirm-password-wrap{margin-top:20px;;margin-left:150px;}
+#new-errors,#error-password{font-size:12px;color:#d9534f;}
+#password-infor{text-align:center;font-size:12px;color:#d9534f;}

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>添加问题</title>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/font-icons.css"/>
+    <link rel="stylesheet" href="../css/mobiscroll.css">
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../js/mobiscroll.js"></script>
+    <script src="../js/jquery.placeholder.js"></script>
+    <script src="../js/layer/layer.js"></script>
+</head>
+<body>
+<div id="header">
+    <span class="ti-user">用户：</span>
+    <span class="userName"></span>
+    <span class="enter">退出登录</span>
+    <a href="modifyPassword.html"><span class="amend"> 修改密码</span></a>
+</div>
+<div id="add">
+    <input type="text" name="creator" style="display:none"/>
+    <div id="tab">
+        <ul>
+            <li class="active" name="show_bug">
+                <input type="radio" style="display: none" name="supporttype" id="bug" value="bug" checked><label
+                    class="BK label" for="bug">新增bug</label>
+            </li>
+            <li name="show_need">
+                <input type="radio" style="display: none" name="supporttype" id="need" value="demand"><label
+                    class="label" for="need">新增需求</label>
+            </li>
+        </ul>
+    </div>
+    <ul class="list">
+        <li>
+            <span class="title_A">大区:</span>
+            <select class="list_1" name="areaname">
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="深圳">深圳</option>
+                <option value="浙江区">浙江区</option>
+                <option value="苏皖区">苏皖区</option>
+                <option value="华南区">华南区</option>
+                <option value="福建区">福建区</option>
+                <option value="华中区">华中区</option>
+                <option value="西南区">西南区</option>
+                <option value="西北区">西北区</option>
+                <option value="津冀区">津冀区</option>
+                <option value="东北区">东北区</option>
+                <option value="山东区">山东区</option>
+                <option value="央本-军工">央本-军工</option>
+                <option value="总部">总部</option>
+
+            </select>
+        </li>
+        <li class="proName">
+            <span class="title_A">项目名称:</span>
+             <div class="proCount">
+                <select class="list_2" name="projectname"></select>
+                <input type="text" class="Headquarter">
+                <div class="HeadSelect"></div>
+            </div>
+        </li>
+        <li>
+            <span class="title_A">领域:</span>
+            <select class="list_3" name="field">
+                <option value="财务会计">财务会计</option>
+                <option value="增值税管理平台">增值税管理平台</option>
+                <option value="报表">报表</option>
+                <option value="合并报表">合并报表</option>
+                <option value="电子采购">电子采购</option>
+                <option value="产品成本">产品成本</option>
+                <option value="资金管理">资金管理</option>
+                <option value="资产管理">资产管理</option>
+                <option value="人力资本">人力资本</option>
+                <option value="全面预算">全面预算</option>
+                <option value="供应链">供应链</option>
+                <option value="利润中心会计">利润中心会计</option>
+                <option value="进出口">进出口</option>
+                <option value="应用平台">应用平台</option>
+                <option value="CRM">CRM</option>
+                <option value="财务共享">财务共享</option>
+                <option value="电子销售">电子销售</option>
+                <option value="全渠道营销">全渠道营销</option>
+                <option value="医药">医药</option>
+                <option value="HR">HR</option>
+                <option value="ECM">ECM</option>
+                <option value="生产制造">生产制造</option>
+                <option value="交通公用">交通公用</option>
+                <option value="NC升迁">NC升迁</option>
+                <option value="房地产">房地产</option>
+                <option value="出版传媒">出版传媒</option>
+                <option value="效率环境">效率环境</option>
+                <option value="移动">移动</option>
+                <option value="轻量级平台">轻量级平台</option>
+                <option value="ESB">ESB</option>
+                <option value="BQ8">BQ8</option>
+                <option value="电子发票和税务云">电子发票和税务云</option>
+                <option value="商业分析">商业分析</option> 
+                <option value="工程云">工程云</option>
+                <option value="税务云">税务云</option>
+                <option value="友空间">友空间</option>
+                <option value="采购云">采购云</option>
+                <option value="分析云">分析云</option>
+                <option value="渠道云">渠道云</option>
+                <option value="协同云">协同云</option>
+                <option value="移动审批">移动审批</option>
+            </select>
+        </li>
+        <li>
+            <span class="title_A">录单人:</span>
+            <span class="text" id="pk_user"></span>
+            <input type="text" value="" name="creatorname" style="display:none">
+        </li>
+        <li>
+            <span class="title_A">解决人:</span>
+            <input placeholder="邮箱前缀" class="list_4" type="text" id="solverName" name="solvername">
+            <span id="solvepeople"></span>
+        </li>
+        <li>
+            <span class="title_A name">BUG名称:</span>
+            <textarea name="supportname" placeholder="最多20个字"></textarea>
+            <i class="tipe">*</i>
+        </li>
+        <li>
+            <span class="title_A describe">BUG描述:</span>
+            <textarea placeholder="最多400字" class="textAr" name="description" rows="6"></textarea>
+            <i class="tipe">*</i>
+        </li>
+        <li>
+            <span class="title_A">计划用时:</span>
+            <input type="number" min="1" max="99" name="plantime">
+            <span class="time">小时</span>
+            <i class="tipe">*</i>
+        </li>
+        <li>
+            <span class="title_A">计划完成日期:</span>
+            <input type="text" name="finishtime" id="finishtime" readonly>
+            <span class="dateDelete">×</span>
+        </li>
+        <li>
+            <span class="title_A">实际用时:<br/>(不含加班)</span>
+            <input type="text" min="1" max="99" name="actualtime">
+            <span class="time">小时</span>
+        </li>
+        <li>
+            <span class="title_A">加班用时:</span>
+            <input type="text" min="1" max="99" name="overtime">
+            <span>小时</span>
+        </li>
+
+        <li>
+            <span class="button">提交</span>
+        </li>
+    </ul>
+</div>
+<div id="footer">
+    <ul>
+        <li>
+            <a href="../index.html">
+                <div>首页</div>
+            </a>
+        </li>
+        <li class="active chooseCol">
+            <a href="add.html">
+                <div>添加</div>
+            </a>
+        </li>
+        <li>
+            <a href="caculate.html">
+                <div>统计</div>
+            </a>
+        </li>
+        <li>
+            <a href="mine.html">
+                <div>我的</div>
+            </a>
+        </li>
+        <li>
+            <a href="ranking.html">
+                <div>排行</div>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    $(function () {
+        if (!localStorage.token) {
+            layer.alert('请先登录', {closeBtn: 0, icon: 7}, function (index) {
+                window.location.href = 'login.html';
+                layer.close(index)
+            });
+        }
+        $('.enter').click(function () {
+            localStorage.token = '';
+            localStorage.userid = '';
+            window.location.href = 'login.html'
+        });
+        $('.userName').html(localStorage.userName);
+
+
+        document.getElementById('solverName').onkeyup = function () {
+            if (document.getElementById('solverName').value != "") {
+                $.post(localStorage.location + "getdhusernameandmobile", {solvername: document.getElementById('solverName').value}, function (data) {
+                    if (!data.data) {
+                        $('#solvepeople').html('查无此人');
+                    } else {
+                        $('#solvepeople').html(data.data);
+                    }
+                })
+            } else {
+                document.getElementById("solvepeople").innerHTML = "";
+                document.getElementById('solverName').value = '';
+            }
+        };
+//
+//        $("input[name='solvername']").bind("input propertychange",function () {
+//            if (document.getElementById('solverName').val() != "") {
+//                $.post(localStorage.location+"getdhusernameandmobile", {solvername: $(this).val()}, function (data) {
+//                    if (!data.data) {
+//                        $('#solvepeople').html('查无此人');
+//                    }else{
+//                        $('#solvepeople').html(data.data);
+//                    }
+//                })
+//            }else{
+//                document.getElementsById("solvepeople").innerHTML="";
+//                $(this).val('');
+//            }
+//        });
+        $('.dateDelete').click(function () {
+            $('#finishtime').val('')
+        });
+        $("textarea[name='description']").bind('blur', function () {
+            var length = $(this).val().length;
+            if (length > 400) {
+                layer.alert('最多输入400字');
+                return false
+            }
+        });
+        $("textarea[name='supportname']").bind('blur', function () {
+            var length = $(this).val().length;
+            if (length > 20) {
+                layer.alert('最多输入20字');
+                return false
+            }
+        });
+        String.prototype.trim = function () {
+            return this.replace(/(^\s*)|(\s*$)/g, '');
+        };
+        //记录前三项选择  ====================================
+        $(".list_3 option[value = " + localStorage.fieldA + "]").attr('selected', true);
+        if (localStorage.areanameA) {
+            $(".list_1 option[value = " + localStorage.areanameA + "]").attr('selected', true);
+            if (localStorage.areanameA == '总部') {
+                $('.list_2').hide();
+                $('.Headquarter').show();
+            } else {
+                $('.list_2').show();
+                $('.Headquarter').hide();
+                $('.HeadSelect').hide();
+                $.post(localStorage.location + "getdhprojectname", {areaname: localStorage.areanameA}, function (data) {
+                    $("[name='projectname']").html("");
+                    var data = data.data;
+                    if (!data.length) {
+                        $("[name='projectname']").append("<option value='无'>此大区无项目</option>");
+                    } else {
+                        for (var i = 0; i < data.length; i++) {
+                            $("[name='projectname']").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                        }
+                    }
+                });
+            }
+
+        } else {
+            localStorage.areanameA = '北京';
+            $.post(localStorage.location + "getdhprojectname", {areaname: "北京"}, function (data) {
+                $("[name='projectname']").html("");
+                var data = data.data;
+                if (!data.length) {
+                    $("[name='projectname']").append("<option value='无'>此大区无项目</option>");
+                } else {
+                    for (var i = 0; i < data.length; i++) {
+                        $("[name='projectname']").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                    }
+                }
+            });
+        }
+        //大区绑定各自的项目 =========================================
+        $("[name='areaname']").change(function () {
+            if ($("[name='areaname']").val() == '总部') {
+                $('.list_2').hide();
+                $('.Headquarter').show();
+            } else {
+                $('.list_2').show();
+                $('.Headquarter').hide();
+                $('.HeadSelect').hide();
+                $.post(localStorage.location + "getdhprojectname", {areaname: $("[name='areaname']").val()}, function (data) {
+
+                    $("[name='projectname']").html("");
+                    var data = data.data;
+                    if (!data.length) {
+                        $("[name='projectname']").append("<option value='无'>此大区无项目</option>");
+                    } else {
+                        for (var i = 0; i < data.length; i++) {
+                            $("[name='projectname']").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                        }
+                    }
+                });
+            }
+        });
+        //大区为总部时，输入查询
+        $('.Headquarter').bind('input propertychange', function () {
+            var main = $(this).val();
+           
+            $.post(localStorage.location + "getzbprojects", {querystr: main}, function (data) {
+                var data = data;
+                var span;
+                $('.HeadSelect').empty();
+                if (data.status == 'success') {
+                    if (data.data.length == 0) {
+                        span = '<p>没有相匹配的项目</p>';
+                        $('.HeadSelect').append(span)
+                    } else {
+                        for (var i = 0; i < data.data.length; i++) {
+                            var span = '<p class="proList">' + data.data[i] + '</p>';
+                            $('.HeadSelect').append(span)
+                        }
+                    }
+                } else {
+                    layer.alert('获取数据失败')
+                }
+            });
+        });
+        $('.HeadSelect').on('click', '.proList', function () {
+            $('.Headquarter').val($(this).html());
+        });
+        $('.Headquarter').blur(function () {
+            setTimeout(function () {
+                $('.HeadSelect').hide()
+            }, 300)
+        });
+        $('.Headquarter').focus(function () {
+            $('.HeadSelect').show()
+        });
+        localStorage.supporttype = 'bug';
+        //提交===============================================
+        $(".button").on("click", function () {
+            if (!$("[name='supportname']").val()) {
+                layer.alert("问题名称不能为空！");
+                return 0;
+            }
+            if (!$("[name='description']").val()) {
+                layer.alert("问题描述不能为空！");
+                return 0;
+            }
+            if ($("textarea[name='supportname']").val().length > 20) {
+                layer.alert('BUG名称最多20字');
+                return false;
+            }
+            if ($("textarea[name='description']").val().length > 400) {
+                layer.alert('BUG描述最多400字');
+                return false;
+            }
+            if ($("[name='projectname']").val() == '无') {
+                layer.alert("此大区没有项目，不能提交！");
+                return 0;
+            }
+            if ($("[name='solvername']").val() != '' && $('#solvepeople').html() == '查无此人') {
+                layer.alert('请输入正确的解决人');
+                return false
+            }
+            var arr = /^\+?[0-9][0-9]?(\.[0-9])?$/;
+            var arrr = /^(0\.5)$/;
+            var text1 = $("input[name='plantime']").val();
+            var text2 = $("input[name='actualtime']").val();
+            var text3 = $("input[name='overtime']").val();
+
+            if (!arr.test(text1) || parseFloat(text1) == 0) {
+                layer.alert("计划用时：请输入可带一位小数的浮点数!", {icon: 7, closeBtn: 0});
+                return 0;
+            }
+            if (text2) {
+                if (!arr.test(text2) || parseFloat(text2) == 0) {
+                    layer.alert("实际用时：请输入可带一位小数的浮点数!", {icon: 7, closeBtn: 0});
+                    return 0;
+                }
+            }
+            if (text3) {
+                if (!arr.test(text3) || parseFloat(text3) == 0) {
+                    layer.alert("加班用时：请输入可带一位小数的浮点数!", {icon: 7, closeBtn: 0});
+                    return 0;
+                }
+            }
+            var projectname;
+            if ($("[name='areaname']").val() == '总部') {
+                projectname = $('.Headquarter').val();
+            } else {
+                projectname = $("[name='projectname']").val()
+            }
+            var params = {
+                supporttype: localStorage.supporttype,
+                areaname: $("[name='areaname']").val(),
+                projectname: projectname,
+                field: $("[name='field']").val(),
+                creator: $("[name='creator']").val(),
+                creatorname: $("[name='creatorname']").val(),
+                solvername: $("[name='solvername']").val().trim(),
+                supportname: $("[name='supportname']").val().trim(),
+                description: $("[name='description']").val().trim().replace(/\n/g, '~@~@~'),
+                plantime: $("[name='plantime']").val(),
+                finishtime: $("[name='finishtime']").val(),
+                actualtime: $("[name='actualtime']").val(),
+                overtime: $("[name='overtime']").val(),
+                namemobile: $('#solvepeople').html(),
+                image1: $("[name='image1']").val(),
+                image2: $("[name='image2']").val(),
+                image3: $("[name='image3']").val()
+            };
+
+            $.post(localStorage.location + "adddhsupport", params, function (data) {
+                if (data.status == 'success') {
+                    layer.alert("添加成功！");
+                    localStorage.areanameA = $("[name='areaname']").val();
+                    localStorage.fieldA = $("[name='field']").val();
+                    $("[name='solvername']").val('');
+                    $("[name='supportname']").val('');
+                    $("[name='description']").val('');
+                    $("[name='plantime']").val('');
+                    $("[name='finishtime']").val('');
+                    $("[name='actualtime']").val('');
+                    $("[name='overtime']").val('');
+                    $('#solvepeople').html('');
+                }else{
+                    layer.alert(data.message)
+                }
+            });
+        });
+    });
+
+    $(function () {
+        var name = localStorage.userName;
+        $("input[name='creatorname']").val(name).prev(".text").html(name);
+        $("input[name='creator']").val(localStorage.token);
+        $("#tab li").on("click", function () {
+            //状态清空
+            $(this).children('label').addClass('BK');
+            $(this).siblings('li').children('label').removeClass('BK');
+
+            $("input[name='solvername'],input[name='supportname'],input[name='description'],input[name='plantime'],input[name='finishtime'],input[name='actualtime'],input[name='image1'],input[name='overtime'],input[name='image2'],input[name='image3']").val("");
+            $("textarea").val("");
+            $(".img-box").html('');
+            $("#upload").show();
+            var id = $(this).find("label").attr("for");
+            localStorage.supporttype = $(this).find('input').val();
+            $("input[type='radio'][id='" + id + "']").check = true;
+            if (id == 'bug') {
+                $(".name").html("BUG名称:");
+                $(".describe").html("BUG描述:");
+                $(".time").html("小时");
+            } else if (id == 'need') {
+                $(".name").html("需求名称：");
+                $(".describe").html("需求描述：");
+                $(".time").html("人/天");
+
+            }
+            $("input[type='radio']:checked").closest("li").addClass("active").siblings().removeClass("active");
+        });
+    });
+
+    $(function () {
+        var opt_date = {
+            preset: 'date', //日期date
+            theme: 'default', //皮肤样式
+            dateFormat: 'yy-mm-dd', // 日期格式
+            setText: '确定', //确认按钮名称
+            cancelText: '取消', //取消按钮
+            dateOrder: 'yymmdd', //面板中日期排列格式
+            dayText: '日', monthText: '月', yearText: '年' //面板中年月日文字
+        };
+        $('#finishtime').mobiscroll(opt_date)
+    });
+</script>
+</body>
+</html>

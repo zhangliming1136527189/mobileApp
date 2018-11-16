@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>我的问题</title>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/font-icons.css"/>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../js/layer/layer.js"></script>
+</head>
+<body>
+<div id="header">
+    <span class="ti-user">用户：</span>
+    <span class="userName"></span>
+    <span class="enter">退出登录</span>
+    <a href="modifyPassword.html"><span  class="amend"> 修改密码</span></a>
+</div>
+<div id="mine">
+    <div id="theTop">
+        <span>NC双百 我的战绩！! !</span>
+    </div>
+    <div id="search">
+        <input type="text" placeholder="搜索BUG/需求名称、BUG/需求描述">
+        <span class="ti-search">搜索</span>
+    </div>
+    <div id="tab">
+        <ul>
+            <li class="active" name="bug"><a class="BK" href="##" id="applied">我的BUG<span class="bugCount"></span></a>
+            </li>
+            <li name="demand"><a href="#" id="reviewing">我的需求<span class="demandCount"></span></a></li>
+        </ul>
+    </div>
+    <div class="screening">
+        <div class="region">
+            <span> 大区：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>北京</li>
+                <li>上海</li>
+                <li>深圳</li>
+                <li>浙江区</li>
+                <li>苏皖区</li>
+                <li>华南区</li>
+                <li>福建区</li>
+                <li>华中区</li>
+                <li>西南区</li>
+                <li>西北区</li>
+                <li>津冀区</li>
+                <li>东北区</li>
+                <li>山东区</li>
+                <li>央本-军工</li>
+                <li>总部</li>
+            </ul>
+        </div>
+        <div class="domain">
+            <span> 领域：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>财务会计</li>
+                <li>增值税管理平台</li>
+                <li>报表</li>
+                <li>合并报表</li>
+                <li>电子采购</li>
+                <li>产品成本</li>
+                <li>资金管理</li>
+                <li>资产管理</li>
+                <li>人力资本</li>
+                <li>全面预算</li>
+                <li>供应链</li>
+                <li>利润中心会计</li>
+                <li>进出口</li>
+                <li>应用平台</li>
+                <li>CRM</li>
+                <li>财务共享</li>
+                <li>电子销售</li>
+                <li>全渠道营销</li>
+                <li>医药</li>
+                <li>HR</li>
+                <li>ECM</li>
+                <li>生产制造</li>
+                <li>交通公用</li>
+                <li>NC升迁</li>
+                <li>web开发</li>
+                <li>房地产</li>
+                 <li>出版传媒</li>
+                 <li>效率环境</li>
+                 <li>移动</li>
+                 <li>轻量级平台</li>
+                 <li>ESB</li>
+                 <li>BQ8</li>
+            </ul>
+        </div>
+		 <div class="typeFile">
+              <span>状态：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>未开始</li>
+                <li>进行中</li>
+                <li>已解决</li>
+            </ul>
+        </div>
+    </div>
+    <div id="mineShow">
+        <span class="reminder">正在加载...</span>
+        <div class="show">
+
+        </div>
+        <span class="nomore">没有更多数据</span>
+        <div id="thePage">
+            <p id="back">上一页</p>
+            <ul id="yema">
+            </ul>
+            <p id="next">下一页</p>
+            <p id="total"></p>
+            <div id="tiao">
+                <input type="text" id="inputNum"/>
+                <span id="goTo">跳转</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="footer">
+    <ul>
+        <li>
+            <a href="../index.html">
+                <div>首页</div>
+            </a>
+        </li>
+        <li>
+            <a href="add.html">
+                <div>添加</div>
+            </a>
+        </li>
+        <li>
+            <a href="caculate.html">
+                <div>统计</div>
+            </a>
+        </li>
+        <li class="active chooseCol">
+            <a href="mine.html" class="active">
+                <div>我的</div>
+            </a>
+        </li>
+        <li>
+            <a href="ranking.html">
+                <div>排行</div>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+$(function () {//分页
+    if(localStorage.userid){
+        if(localStorage.page2){
+            jiazai(localStorage.page2)
+        }else{
+            jiazai(0);
+            localStorage.page2 = 0;
+        }
+    } else{
+        layer.alert('请先登录', {closeBtn:0,icon:7},function(index){
+            window.location.href = 'login.html' ;
+            layer.close(index)
+        }) ;
+    }
+    $('.userName').html(localStorage.userName);
+    $('.enter').click(function(){
+        localStorage.token = '';
+        localStorage.userid = '';
+        window.location.href = 'login.html'
+    });
+         localStorage .which = "mine";
+    //================================
+    if(localStorage.areaname2){
+        for(var i = 0; i<$('.region li').length;i++){
+            if($('.region li').eq(i).html()==localStorage.areaname2){
+                $('.region li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+            }
+        }
+    }else{
+        localStorage.areaname2 = ''
+    }
+    if(localStorage.field2){
+        for(var i = 0; i<$('.domain li').length;i++){
+            if($('.domain li').eq(i).html()==localStorage.field2){
+                $('.domain li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+            }
+        }
+    }else{
+        localStorage.field2 = ''
+    }
+    if(localStorage.typeFile2){
+        for(var i = 0; i<$('.typeFile li').length;i++){
+            if($('.typeFile li').eq(i).html()==localStorage.typeFile2){
+                $('.typeFile li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+            }
+        }
+    }else{
+        localStorage.typeFile2 = ''
+    }
+
+    if(localStorage .idName2){
+        $('#tab li').children('a').removeClass('BK') ;
+        $('#tab li[name="'+localStorage .idName2+'"]').children('a').addClass('BK');
+    }else{
+        localStorage .idName2 = 'bug'
+    }
+    $('.region li').click(function () {
+        var region = $(this).html();
+        var areaname;
+        if (region == '全部') {
+            areaname = ''
+        } else {
+            areaname = region
+        }
+        localStorage .setItem('areaname2', areaname);
+        localStorage.page2 = 0;
+        $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+        jiazai(0)
+    });
+    $('.domain li').click(function () {
+        var domain = $(this).html();
+        var field;
+        if (domain == '全部') {
+            field = '' ;
+        } else {
+            field = domain
+        }
+        localStorage .setItem('field2', field);
+        localStorage.page2 = 0;
+        $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+
+        jiazai(0)
+    });
+    $('.typeFile li').click(function () {
+        var typeFile = $(this).html();
+        var typeF;
+        if (typeFile == '全部') {
+            typeF = ''
+        } else {
+            typeF = typeFile
+        }
+        localStorage .setItem('typeFile2', typeF);
+        localStorage.page2 = 0;
+        $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+        jiazai(0)
+    });
+    //切换数据
+    $("#tab li").on("click", function () {
+        $(".show").html("");
+        $("#bug,#demand").html("");
+        var idName = $(this).attr("name");
+        localStorage .idName2 = idName;
+        $(this).children('a').addClass('BK') ;
+        $(this).siblings('li').children('a').removeClass('BK') ;
+        $("div[id='" + idName + "']").show().siblings().hide().html();
+        if(idName == 'bug'){
+            $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+        }else{
+            $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+        }
+        jiazai(0)
+    });
+    if(localStorage .idName2  == 'bug'){
+        $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+    }else{
+        $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+    }
+    function jiazai(num) {
+        var num = Number(num);
+        $('.msg').unbind();
+        $('.show').html('');
+//		============================================
+        $('.reminder').show();
+        $('.nomore').hide();
+        $(".show").html("");
+        if(localStorage .idName2){
+            var idName = localStorage .getItem('idName2');
+        } else{
+            var idName = 'bug'
+        }
+
+        var params = {
+            beginindex: 1 + num * 10,
+            endindex: 10 + num * 10,
+            param: JSON.stringify({
+                supporttype: idName,
+                creator: localStorage.token,
+                solvername: localStorage.username,
+                search: $('#search input').val(),
+                areaname: localStorage .areaname2,
+                field: localStorage .field2,
+                supportstatus:localStorage.typeFile2
+            })
+
+        };
+        $.post(localStorage.location+"mydhsupports", params, function (data) {
+            $('.delData').unbind();
+            $(".bugCount").html("(" + (data.bugCount ? data.bugCount : 0) + ")");
+            $(".demandCount").html("(" + (data.demandCount ? data.demandCount : 0) + ")");
+            var length;
+            if (idName == 'bug') {
+                length = Math.ceil(data.bugCount / 10);
+            } else if (idName == 'demand') {
+                length = Math.ceil(data.demandCount / 10);
+            }
+            var bugcount = data.bugCount;
+            var demandCount = data.demandCount;
+            localStorage .setItem('pageZ', length);
+            $('#total').html('共' + length + '页');
+            var dataD = data.data;
+            if(dataD.length == 0){
+                $('.reminder').hide() ;
+                $('.nomore').show();
+            }else{
+                for (var i = 0; i < dataD.length; i++) {
+                    var appendStr =
+                            '<div class="msg">' +
+                            '<a target="_blank" href="../html/detail.html?pk_support=' + dataD[i].pk_support + '">' +
+                            '<span class="title_C"><span class="title">大区:</span><span class="text">' + (dataD[i].areaname ? dataD[i].areaname : "") + '</span></span>'+
+                            '<p class="proName"><span class="title">项目名称:</span><span class="text">' + (dataD[i].projectname ? dataD[i].projectname : "") + '</span></p>' +
+                            '<p class="typeName"><span class="title supportType">BUG名称:</span><span class="text">' + (dataD[i].supportname ? dataD[i].supportname : "") + '</span></p>' +
+                            '<span class="title_D"><span class="title">领域:</span><span class="text">' + (dataD[i].field ? dataD[i].field : "") + '</span></span>' +
+                            '<span  class="title_E"><span class="title">录单时间:</span><span class="text">' + dataD[i].creationtime + '</span></span>' +
+                            '<span  class="title_G"><span class="title">解决人:</span><span class="text">' + (dataD[i].namemobile ? dataD[i].namemobile.split('（')[0] : "暂无") + '</span></span>' +
+                            '</a>' +
+                            (dataD[i].supportstatus == "已解决" ? '<span class="state">' + (dataD[i].supportstatus ? dataD[i].supportstatus : "") + '</span>' : "") +
+                            (dataD[i].supportstatus == "进行中" ? '<span class="state doing">' + (dataD[i].supportstatus ? dataD[i].supportstatus : "") + '</span>' : "") +
+                            (dataD[i].supportstatus == "未开始" ? '<span class=" notstart">' + (dataD[i].supportstatus ? dataD[i].supportstatus : "") + '</span>' : "") +
+                            '<a class="delData" href="##">删除</a>' +
+                            '<a href="change.html?pk_support=' + dataD[i].pk_support + '" class="change">修改</a>' +
+                            '</div>';
+                    $('.reminder').hide();
+                    $(".show").append(appendStr);
+                    if(dataD[i].supporttype == "demand"){
+                        $('.supportType').html('需求名称:')
+                    }else{
+                        $('.supportType').html('BUG名称:')
+                    }
+                }
+            }
+            yema(num + 1);
+            $('.delData').click(function () {
+                var that = this;
+                var pk = $(this).next('a').attr('href').split('pk_support=')[1];
+                layer.confirm('确定删除?', function(index){
+                    $.post(localStorage.location+"deletedhsupport", {pk_support: pk}, function (data) {
+                        if (data.status == 'success') {
+                            layer.alert("删除成功！");
+                            $(that).parent().remove();
+                            if (idName == 'bug') {
+                                bugcount--;
+                                $(".bugCount").html('('+bugcount+')');
+                            } else if (idName == 'demand') {
+                                demandCount--;
+                                $(".demandCount").html('('+demandCount+')');
+                            }
+                        } else {
+                            layer.alert("删除失败！");
+                        }
+                    });
+                    layer.close(index);
+                })  ;
+            })  ;
+        });
+    }
+
+    function yema(page) {
+        var yeMa = $('#yema');
+        $('.page').unbind();
+        yeMa.html('');
+        var page = Number(page);
+        var lastPage = Number(localStorage .getItem("pageZ"));
+        $('#total').html('共' + lastPage + '页')
+        if (page < 5) {
+            if (lastPage >= 0 && lastPage <= 6) {
+                for (var i = 1; i < lastPage + 1; i++) {
+                    var li = '<li class="page">' + i + '</li>';
+                    yeMa.append(li)
+                }
+            } else if (lastPage > 6) {
+                for (var i = 1; i < 7; i++) {
+                    var li = '<li class="page">' + i + '</li>';
+                    yeMa.append(li)
+                }
+                var pageLast = '<p>...</p><li class="page">' + lastPage + '</li>';
+                yeMa.append(pageLast);
+
+            }
+        } else if (page >= 5 && page <= lastPage - 3) {
+            var liOne = '<li class="page">1</li><p>...</p>';
+            yeMa.append(liOne);
+            for (var i = page - 2; i < page + 3; i++) {
+                var li = '<li class="page">' + i + '</li>';
+                yeMa.append(li)
+            }
+            var pageLast = '<p>...</p><li class="page">' + lastPage + '</li>';
+            yeMa.append(pageLast);
+
+        } else if (page >= lastPage - 3) {
+            var liOne = '<li class="page">1</li><p>...</p>';
+            yeMa.append(liOne);
+            for (var i = page - 2; i < lastPage + 1; i++) {
+                var li = '<li class="page">' + i + '</li>';
+                yeMa.append(li)
+            }
+        }
+        for (var i = 0; i < ('.page').length; i++) {
+            if ($('.page').eq(i).html() == page) {
+                $('.page').eq(i).addClass('col')
+            }
+        }
+        $('.page').click(function () {
+            var thisNum = $(this).html();
+            jiazai(thisNum - 1);
+            localStorage .setItem('page2', thisNum - 1)
+        })
+    }
+
+    //上一页==================================
+    $('#back').click(function () {
+        var pageNum = localStorage .getItem('page2');
+        if (pageNum < 1) {
+            pageNum = 1;
+            layer.alert('已是第一页');
+            return false
+        }
+        jiazai(pageNum - 1);
+        pageNum--;
+        localStorage .setItem('page2', pageNum)
+    });
+
+    //下一页===================================
+    $('#next').click(function () {
+        var pageNum = localStorage .getItem('page2');
+        var lastPage = Number(localStorage .getItem("pageZ"));
+        pageNum++;
+        if (pageNum >= lastPage) {
+            pageNum = lastPage - 1;
+            layer.alert('已是最后一页');
+            return false
+        }
+        jiazai(pageNum);
+        localStorage .setItem('page2', pageNum)
+    });
+
+    //跳转页===================================
+    $('#goTo').click(function () {
+        var ye = $('#inputNum').val();
+        var lastPage = Number(localStorage .getItem("pageZ"));
+        if (!/^[1-9]\d*$/.test(ye)) {
+            layer.alert('请输入正整数');
+        } else {
+            if (ye > lastPage) {
+                ye = lastPage;
+            }
+            jiazai(ye - 1);
+            localStorage.page2 = ye - 1;
+        }
+        $('#inputNum').val('');
+    });
+    //搜索======================================
+    $("#search input").on("keypress", function (event) {
+        if (event.keyCode == "13") {
+            $("#search input").blur();
+            jiazai(0)
+        }
+    });
+    $('.ti-search').click(function () {
+        jiazai(0);
+    }) ;
+});
+</script>
+</body>
+</html>

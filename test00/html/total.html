@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NC百分百</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/caculate.css" />
+    <link rel="stylesheet" href="../css/font-icons.css" />
+    <script src="../js/jquery-3.0.0.js"></script>
+    <style>
+    *{
+        padding:0;
+        margin:0;
+        font-family: "微软雅黑";
+    }
+    ul,li{
+        list-style:none;
+    }
+
+    @font-face {
+        font-family: 'iconfont';
+        src: url('../css/ux_1477562257_9137309/iconfont.eot'); /* IE9*/
+        src: url('../css/ux_1477562257_9137309/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../css/ux_1477562257_9137309/iconfont.woff') format('woff'), /* chrome、firefox */
+        url('../css/ux_1477562257_9137309/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url('../css/ux_1477562257_9137309/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+    }
+    #choose-wrap{
+        width:100%;
+    }
+    #choose-wrap p.iconfont{
+        font-family:"iconfont";
+        font-size:60px;
+        font-style:normal;
+        color:#fff;
+    }
+    #choose-wrap a{
+        width:100%;
+        display: inline-block;
+        height:100%;
+    }
+    #choose-wrap span{
+        font-size:20px;
+        color:#fff;
+        width:100%;
+        text-align: center;
+        display: inline-block;
+    }
+    #choose-wrap p{
+        text-align: center;
+        font-size:14px;
+        color:#fff;
+    }
+    .choose-list1{
+        width:60%;
+        height:70%;
+        background-color: dodgerblue;
+        /*background-color: #415b75;*/
+        float: left;
+        position: relative;
+    }
+    .choose-list2{
+        width:40%;
+        height:35%;
+        background-color: #ff4566;
+        /*background-color: #9c152d;*/
+        float: left;
+        position: relative;
+    }
+    .choose-list5{
+        width:60%;
+        height:30%;
+        background-color: #85D262;
+        /*background-color: #9c152d;*/
+        float: left;
+        position: relative;
+    }
+    .choose-list3{
+        width:40%;
+        height:35%;
+        background-color: #ffab12;
+        /*background-color: #ca8200;*/
+        float: left;
+        position: relative;
+    }
+    .choose-list4{
+        width:40%;
+        height:30%;
+        background-color: #4ba94b;
+        /*background-color: #6d926d;*/
+        float: left;
+        position: relative;
+    }
+    .father{
+        position: absolute;
+        top:50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width:100%;
+    }
+    </style>
+</head>
+<body>
+<div id="choose-wrap">
+    <div class="choose-list1">
+        <a href="caculate.html">
+            <div class="father">
+                <p class="iconfont">&#xe74d;</p>
+                <span>统计图表展示</span>
+            </div>
+        </a>
+    </div>
+    <div class="choose-list2">
+        <a href="Qranking.html">
+            <div class="father">
+                <p class="iconfont">&#xe605;</p>
+                <span>已解决数排行</span>
+            </div>
+        </a>
+    </div>
+    <div class="choose-list3">
+        <a href="Tranking.html">
+            <div class="father">
+                <p class="iconfont">&#xe609;</p>
+                <span>节约用时排行</span>
+                <!--<p >计划用时-实际用时</p>-->
+                <!--<p >（不包含加班用时）</p>-->
+            </div>
+        </a>
+    </div>
+    <div class="choose-list5">
+        <a href="itemRanking.html">
+            <div class="father">
+                <p class="iconfont">&#xe605;</p>
+                <span>按项目排行</span>
+            </div>
+        </a>
+    </div>
+    <div class="choose-list4">
+        <a href="exchange.html">
+            <div class="father">
+                <p class="iconfont">&#xe635;</p>
+                <span>人员调度展示</span>
+            </div>
+        </a>
+    </div>
+</div>
+<div id="footer" style="position:absolute;bottom:0;left:0;width:100vw;">
+    <ul>
+        <li>
+            <a href="../index.html">
+                <i class="ti-menu-alt"></i><div>查看</div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="a_add">
+                <i class="ti-plus"></i><div>添加</div>
+            </a>
+        </li>
+        <li class="active">
+            <a href="total.html"  class="active">
+                <i class="ti-stats-up"></i><div>统计</div>
+            </a>
+        </li>
+        <li>
+            <a href="mine.html">
+                <i class="ti-user"></i><div>我的</div>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    $(".a_add").on("click",function(){
+        $.post(localStorage.location+"mobilecheckauthority",{userid:sessionStorage.token},function(data){
+            console.log(data);
+            if(data.status=="success"){
+                window.location="add.html";
+            }else if(data.status=="error"){
+                window.location="sorry.html";
+            }
+        });
+    });
+    initial();
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+    var height=document.documentElement.clientHeight-$("#footer").height();
+    $("#choose-wrap").height(height);
+    $("#tab li").on("click",function(){
+        var idName=$(this).attr("name");
+        $("div[id='"+idName+"']").show().siblings().hide();
+        $(this).addClass("active").siblings().removeClass("active");
+    });
+    function initial(){
+        var zhengwei="0001AA1000000002SLFO,"+//李俊毅
+            "1010ZF100000000001NM,"+//钟志民
+            "0001AA1000000002TYU1,"+//王伟
+            "0001AA1000000002W4SU,"+//李洪鹏
+            "0001AA10000000037SVQ,"+//董跃龙
+            "0001AA100000000393LB,"+//王少华
+            "0001AA10000000034SQ6,"+//李艺轩
+            "0001AA10000000030R77,"+//高昆
+            "0001AA1000000002ZJG0,"+//迟明
+            "0001AA10000000035KVT,"+//张黎明
+            "0001AA1000000002SLFZ,"+//马先虎
+            "0001AA100000000557QW,"+//刘永帅
+            "0001AA1000000003OQ40,"+//王策
+            "0001AA1000000003T6MK,"+//张善庆
+            "0001AA1000000003QY79,"+//张巍
+            "0001AA1000000002W4VG,"+//谢朋程
+            "0001AA10000000058PLI,"+//叶勋
+            "0001AA1000000003QWKU,"+//魏云吉
+            "0001AA1000000003JEX7,"+//王立
+            "0001AA1000000002T2US,"+//聂倩
+            "0001AA1000000003TD3S,"+//李加金
+            "0001AA1000000003MVXA,"+//陈顺风
+            "0001AA1000000003QSB9,"+//周永意
+            "0001AA1000000003QSLC"+//关凯旋
+            "0001ZF10000000039C0T";
+        var a = sessionStorage.token;
+        var num=zhengwei.indexOf(a);
+        if(num==-1){
+               $(".choose-list4").hide();
+        }else{
+            $(".choose-list4").show();
+        }
+    }
+
+</script>
+</body>
+</html>

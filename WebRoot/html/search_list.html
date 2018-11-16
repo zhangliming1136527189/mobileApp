@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>NC主题</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" charset="UTF-8" src="../js/search_list.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../css/searchlist.css">
+		<link rel="stylesheet" type="text/css" href="../css/saleorder.css">
+		<script>
+			function forSearchInfo(id) {
+				window.open("search_info_list.html?id="+id)
+			} 
+		</script> 
+		<style type="text/css">
+			.red {
+				overflow: hidden;
+				background-color: #c0392b;
+				color: #FFFFFF;
+				margin-bottom: 20px;
+			}
+			.blue {
+				    overflow: hidden;
+				    background-color: #2980b9;
+				    color: #FFFFFF;
+				    margin-bottom: 20px;
+			}
+			.grey {
+				    overflow: hidden;
+				    background-color: #efefef;
+				    color: #000000;
+				    margin-bottom: 2px;
+			}
+			
+		</style>
+	</head>
+ 
+	<body>                    
+<!-- 			<div id=""> -->
+<!-- 				<ul> -->
+<!-- 					<li>小N给您找到<span class="list-count"></span>个主题：</li> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
+			<!-- <div id="list" onclick="document.location='http://123.103.9.240:1522/fiwechat/SearchListInfoQuery?id="+id>  -->  
+			  <div id="list" >  
+			  				<ul>
+					<li><b>小N给您找到</b><span class="list-count"></span><b>个主题：</b></li>
+					<hr/>
+				</ul>
+			</div> 
+	</body>
+
+</html>

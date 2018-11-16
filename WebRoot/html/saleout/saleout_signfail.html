@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<script src="../../js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="../../js/alert_confirm.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/saleout.css" />
+		<script type="text/javascript">
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return unescape(r[2]);
+				return null;
+			}
+			var message = GetQueryString("message")
+			function success(url) {
+				$.MsgBox.Alert("", "签收失败！", function() {
+					var hostpart = window.location.host;
+					var url1 = 'http://' + hostpart + '/sale/SaleOutQuery'
+					var url2 = 'http://127.0.0.1:9082/sale/SaleOutQuery'
+					window.open(url1, '_self')
+				});
+			}
+		</script>
+	</head>
+
+	<body id="success" onload="success('../saleout_list.html')"></body>
+
+</html>

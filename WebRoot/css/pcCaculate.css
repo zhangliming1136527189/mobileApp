@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+ul, li {
+    list-style: none;
+}
+div,li,span,a{
+    outline:none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#detailinfo{
+    height:25px;
+    line-height: 25px;
+    width:50%;
+    overflow:auto;
+    padding-top:20px;
+    color:#057cfc;
+}
+
+#studyMain {
+    width: 950px;
+    overflow:hidden;
+    margin: 0 auto;
+}
+#figure{
+    width: 950px;
+    height: 460px;
+}
+#tab{
+    margin-top:10px!important;
+}
+#table,#pie,#column{
+    width: 954px;
+    height: 460px;
+}
+#table table{
+    width: 935px;
+
+}
+.classify{
+    background:#e9eaec;
+    height:60px;
+    width:932px;
+    line-height:30px;
+    margin-left:1px;
+    position:relative;
+    z-index:300;
+    border:1px solid #b7b6b6;
+    border-bottom:3px solid #aeacac;
+}
+.classify_A{
+    display:inline-block;
+    width:322px;
+    height:60px;
+    float:left;
+    line-height:60px;
+    text-align:center;
+    color:#057cfc;
+    border-right:1px solid #b7b6b6 ;
+    position:relative;
+}
+.classify_B{
+    display:inline-block;
+    width:201px;
+    height:60px;
+    float:left;
+    text-align:center;
+    color:#057cfc;
+    border-right:1px solid #b7b6b6 ;
+    position:relative;
+    cursor:pointer;
+}
+.classify_C{
+    display:inline-block;
+    width:201px;
+    height:60px;
+    float:left;
+    text-align:center;
+    color:green;
+    border-right:1px solid #b7b6b6 ;
+    position:relative;
+    cursor:pointer;
+}
+.classify_D{
+    display:inline-block;
+    width:204px;
+    height:60px;
+    float:left;
+    text-align:center;
+    color:red;
+    border-right:1px solid #b7b6b6 ;
+    position:relative;
+    cursor:pointer;
+}
+
+.tableMain{
+    height:400px;
+    overflow:auto;
+    margin-top:-2px;
+}
+#table table tr{
+    text-align: center;
+    width: 925px;
+    height: 30px;
+}
+#table{
+    position:relative;
+}
+.tablerow{
+    width:321px;
+}
+.td_A{
+    width:197px;
+}
+
+#draw-type{
+    width: 925px;
+    height: 40px;
+    line-height: 40px;
+    margin-top:40px;
+}
+#draw-type li {
+    height: 100%;
+    width: 33%;
+    float: left;
+    text-align: center;
+    background:#eee;
+    border-right:1px solid #666;
+}
+#draw-type #column-type{
+    background:#00a1ea;
+    color:#fff
+}
+#draw-type #table-type{
+    border:none;
+}
+#detailinfo span{
+    cursor:pointer;
+}
+#detailinfo span:hover{
+    color:red;
+}
+.paixu{
+    display:inline-block;
+    position:absolute;
+    right:30px;
+    top:10px;
+}
+.toBig_1,.toBig_2,.toBig_3{
+    width:12px;
+    height:12px;
+    background:url("../img/arrow-down-filling.svg") no-repeat;
+    background-size:12px;
+    display:none;
+}
+.toBig_2{
+    display:block;
+}
+
+
+
+
+#pie-nav{
+    text-align: right;
+    margin-right: 20px;
+}
+#pie-nav span:hover{
+    background:deepskyblue;
+    color:#fff;
+}
+#pie-nav span{
+    margin-right: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    border: 1px solid #b3b3b3;
+    border-radius: 4px;
+    background: #f9faf1;
+    cursor: pointer;
+    color:#666;
+}
+#pie-nav .active{
+    background:deepskyblue;
+    color:#fff;
+    border-color:deepskyblue
+}
+
+#table-nav{
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+.bugTd{
+    width: 200px;
+}
+.bugTd_2016,.bugTd_2017{
+    display:inline-block;
+    box-sizing: border-box;
+    width:50%;
+    text-align:right;
+    padding-right:20px;
+}
+.bugTd_2016,.z_2016{
+    color: #0592ce;;
+}
+.bugTd_2017,.z_2017{
+    color:#ff6427;
+}
+
+.tableNumber{
+    width: 200px;
+}
+.z_2016,.z_2017{
+    display:inline-block;
+    box-sizing: border-box;
+    width:50%;
+    text-align:right;
+    padding-right:20px;
+}

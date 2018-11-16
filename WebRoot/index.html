@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/font-icons.css"/>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+</head>
+<body>
+<div id="index">
+     <div id="header">
+            <span class="ti-user">用户：</span>
+            <span class="userName"></span>
+         <span class="enter">退出登录</span>
+         <a href="html/modifyPassword.html"><span  class="amend"> 修改密码</span></a>
+     </div>
+    <div id="theTop">
+        <span>NC双百 等你来挑战！! !</span>
+    </div>
+    <div id="search">
+        <input type="text">
+        <span class="ti-search">搜索</span>
+    </div>
+    <div id="tab">
+        <ul>
+            <li class="active" name="bug"><a id="applied" class="BK" >查看BUG<span class="bugCount"></span></span></a></li>
+            <li name="demand"><a  id="reviewing">查看需求<span class="demandCount"></span></a></li>
+        </ul>
+    </div>
+    <div class="screening">
+        <div class="region">
+            <span> 大区：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>北京</li>
+                <li>上海</li>
+                <li>深圳</li>
+                <li>浙江区</li>
+                <li>苏皖区</li>
+                <li>华南区</li>
+                <li>福建区</li>
+                <li>华中区</li>
+                <li>西南区</li>
+                <li>西北区</li>
+                <li>津冀区</li>
+                <li>东北区</li>
+                <li>山东区</li>
+                <li>央本-军工</li>
+                <li>总部</li>
+            </ul>
+        </div>
+        <div class="domain">
+            <span> 领域：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>财务会计</li>
+                <li>增值税管理平台</li>
+                <li>报表</li>
+                <li>合并报表</li>
+                <li>电子采购</li>
+                <li>产品成本</li>
+                <li>资金管理</li>
+                <li>资产管理</li>
+                <li>人力资本</li>
+                <li>全面预算</li>
+                <li>供应链</li>
+                <li>利润中心会计</li>
+                <li>进出口</li>
+                <li>应用平台</li>
+                <li>CRM</li>
+                <li>财务共享</li>
+                <li>电子销售</li>
+                <li>全渠道营销</li>
+                <li>医药</li>
+                <li>HR</li>
+                <li>ECM</li>
+                <li>生产制造</li>
+                <li>交通公用</li>
+                <li>NC升迁</li>
+                <li>web开发</li>
+                <li>房地产</li>
+                <li>出版传媒</li>
+                <li>效率环境</li>
+                <li>移动</li>
+                <li>轻量级平台</li>
+                <li>ESB</li>
+                <li>BQ8</li>
+                <li>电子发票和税务云</li>
+                <li>商业分析</li> 
+                <li>工程云</li>
+                <li>税务云</li>
+                <li>友空间</li>
+                <li>采购云</li>
+                <li>分析云</li>
+                <li>渠道云</li>
+                <li>协同云</li>
+                <li>移动审批</li>
+            </ul>
+        </div>
+        <div class="typeFile">
+            <span>状态：</span>
+            <ul class="theDomain">
+                <li class="colorChange">全部</li>
+                <li>未开始</li>
+                <li>进行中</li>
+                <li>已解决</li>
+            </ul>
+        </div>
+    </div>
+    <div id="show">
+        <span class="reminder">正在加载...</span>
+        <div class="show">
+
+        </div>
+        <span class="nomore">没有更多数据</span>
+        <div id="thePage">
+            <p id="back">上一页</p>
+            <ul id="yema">
+            </ul>
+            <p id="next">下一页</p>
+            <p id="total"></p>
+            <div id="tiao">
+                <input type="text" id="inputNum"/>
+                <span id="goTo">跳转</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <ul>
+        <li class="active chooseCol">
+            <a href="index.html">
+                <div>首页</div>
+            </a>
+        </li>
+        <li>
+            <a href="html/add.html">
+                <div>添加</div>
+            </a>
+        </li>
+        <li>
+            <a href="html/caculate.html">
+                <div>统计</div>
+            </a>
+        </li>
+        <li>
+            <a href="html/mine.html">
+                <div>我的</div>
+            </a>
+        </li>
+        <li>
+            <a href="html/ranking.html">
+                <div>排行</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    $(function () {
+//        localStorage .which = "index";
+        localStorage.location = 'https://ncapp.yyuap.com/fiwechat/';
+//        localStorage.location = 'http://10.11.115.100:5050/fiwechat/';
+//        localStorage.location = 'http://219.141.185.24:9082/fiwechat/';
+        //初始化数据
+        if(localStorage.userid){
+            localStorage.token = localStorage.userid;
+            if(localStorage.page){
+                jiazai(localStorage.page)
+            }else{
+                localStorage.page = 0;
+                jiazai(0)
+            }
+        }else{
+            layer.alert('请先登录', {closeBtn:0,icon:7},function(index){
+                window.location.href = 'html/login.html' ;
+                layer.close(index)
+            }) ;
+        }
+        $('.userName').html(localStorage.userName);
+        $('.enter').click(function(){
+            localStorage.token = '';
+            localStorage.userid = '';
+            window.location.href = 'html/login.html'
+        }) ;
+        if(localStorage.areaname){
+              for(var i = 0; i<$('.region li').length;i++){
+                   if($('.region li').eq(i).html()==localStorage.areaname){
+                       $('.region li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+                   }
+              }
+        }else{
+            localStorage.areaname = ''
+        }
+        if(localStorage.field){
+            for(var i = 0; i<$('.domain li').length;i++){
+                if($('.domain li').eq(i).html()==localStorage.field){
+                    $('.domain li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+                }
+            }
+        }else{
+            localStorage.field = ''
+        }
+        if(localStorage.typeFile){
+            for(var i = 0; i<$('.typeFile li').length;i++){
+                if($('.typeFile li').eq(i).html()==localStorage.typeFile){
+                    $('.typeFile li').eq(i).addClass('colorChange').siblings('li').removeClass('colorChange');
+                }
+            }
+        }else{
+            localStorage.typeFile = ''
+        }
+
+
+        $('.region li').click(function(){
+            var region =  $(this).html();
+            var areaname;
+            if(region == '全部'){
+                areaname = '';
+            }else{
+                areaname =  region  ;
+            }
+            localStorage.page = 0;
+            localStorage .setItem('areaname',areaname) ;
+             $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+            jiazai(0)
+        }) ;
+        $('.domain li').click(function(){
+            var domain =  $(this).html();
+            var field;
+            if(domain == '全部'){
+                field = ''  ;
+            }else{
+                field =  domain  ;
+            }
+            localStorage.page = 0;
+            localStorage .setItem('field',field) ;
+            $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+            jiazai(0)
+        }) ;
+        $('.typeFile li').click(function () {
+            var typeFile = $(this).html();
+            var typeF;
+            if (typeFile == '全部') {
+                typeF = ''
+            } else {
+                typeF = typeFile
+            }
+            localStorage .setItem('typeFile', typeF);
+            localStorage.page = 0;
+            $(this).addClass('colorChange').siblings('li').removeClass('colorChange');
+            jiazai(0)
+        });
+
+        if(localStorage .idName){
+            $('#tab li').children('a').removeClass('BK');
+
+            $('#tab li[name="'+localStorage .idName+'"]').children('a').addClass('BK');
+        }else{
+            localStorage .idName = 'bug'
+        }
+
+        $("#tab li").on("click", function () {
+            $(".show").html("");
+            var idName = $(this).attr("name");
+            localStorage .idName = idName;
+            $(this).children('a').addClass('BK');
+            $(this).siblings('li').children('a').removeClass('BK');
+            if(idName == 'bug'){
+                $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+            }else{
+                $("#search input").prop("placeholder","搜索需求名称或描述、项目名称、解决人邮箱前缀")
+            }
+            jiazai(0) ;
+
+        });
+
+        if(localStorage .idName  == 'bug'){
+            $("#search input").prop("placeholder","搜索bug名称或描述、项目名称、解决人邮箱前缀")
+        }else{
+            $("#search input").prop("placeholder","搜索需求名称或描述、项目名称、解决人邮箱前缀")
+        }
+
+        function jiazai(num) {
+            var num = Number(num);
+            localStorage.page = num;
+            $('.msg').unbind();
+            $('.show').html('');
+//			var beginindex=$(".msg").length+1;
+            var params = {
+                beginindex: 1 + num * 10,
+                endindex: 10 + num * 10 ,
+                param: JSON.stringify({supporttype: localStorage .idName,search:$('#search input').val(), areaname:localStorage .areaname,field :localStorage .field,supportstatus:localStorage.typeFile})
+            };
+                var method = "alldhsupports";
+                $('.reminder').show();
+                $('.nomore').hide() ;
+            $.post(localStorage.location + method, params, function (data) {
+                 if(localStorage .idName){
+                     var idName = localStorage .getItem('idName');
+                 }else{
+                     var idName = 'bug';
+                 }
+                var length;
+                if (idName == 'bug') {
+                    length = Math.ceil(data.bugCount / 10);
+                } else if (idName == 'demand') {
+                    length = Math.ceil(data.demandCount / 10);
+                }
+                localStorage .setItem('pageZ', length);
+                $('#total').html('共' + length + '页');
+                $(".bugCount").html("(" + (data.bugCount ? data.bugCount : 0) + ")");
+                $(".demandCount").html("(" + (data.demandCount ? data.demandCount : 0) + ")");
+                var idName = localStorage .idName;
+                var dataLength = data.data.length;
+                var dataDat = data.data;
+                if (dataLength == 0) {
+                    $('.reminder').hide();
+                    $('.nomore').show() ;
+                    yema(0) ;
+                    return false
+                } else {
+                    var appendStr = getMsgStr(idName, dataDat);
+                    $(".show").append(appendStr);
+                    $('.reminder').hide();
+                    $('.nomore').hide() ;
+                    yema(num+1);
+                }
+            });
+        };
+
+
+        //生成页数=========================
+        function yema(page) {
+            var yeMa = $('#yema');
+            $('.page').unbind();
+            yeMa.html('');
+            var page = Number(page);
+            var lastPage = Number(localStorage .getItem("pageZ"));
+            $('#total').html('共' + lastPage + '页')
+            if (page < 5) {
+                if (lastPage >= 0 && lastPage <= 6) {
+                    for (var i = 1; i < lastPage + 1; i++) {
+                        var li = '<li class="page">' + i + '</li>';
+                        yeMa.append(li)
+                    }
+                } else if (lastPage > 6) {
+                    for (var i = 1; i < 7; i++) {
+                        var li = '<li class="page">' + i + '</li>';
+                        yeMa.append(li)
+                    }
+                    var pageLast = '<p>...</p><li class="page">' + lastPage + '</li>';
+                    yeMa.append(pageLast);
+
+                }
+            } else if (page >= 5 && page <= lastPage - 3) {
+                var liOne = '<li class="page">1</li><p>...</p>';
+                yeMa.append(liOne);
+                for (var i = page - 2; i < page + 3; i++) {
+                    var li = '<li class="page">' + i + '</li>';
+                    yeMa.append(li)
+                }
+                var pageLast = '<p>...</p><li class="page">' + lastPage + '</li>';
+                yeMa.append(pageLast);
+
+            } else if (page >= lastPage - 3) {
+                var liOne = '<li class="page">1</li><p>...</p>';
+                yeMa.append(liOne);
+                for (var i = page - 2; i < lastPage + 1; i++) {
+                    var li = '<li class="page">' + i + '</li>';
+                    yeMa.append(li)
+                }
+            }
+
+            for (var i = 0; i < ('.page').length; i++) {
+                if ($('.page').eq(i).html() == page) {
+                    $('.page').eq(i).addClass('col')
+                }
+            }
+
+            $('.page').click(function () {
+                var thisNum = $(this).html();
+                jiazai(thisNum - 1);
+                localStorage .setItem('page', thisNum - 1)
+
+            })
+
+        }
+
+        //上一页=============================
+        $('#back').click(function () {
+            var pageNum = localStorage .getItem('page');
+            if (pageNum < 1) {
+                pageNum = 1;
+                layer.alert('已是第一页');
+                return false
+            }
+            jiazai(pageNum - 1);
+            pageNum--;
+            localStorage .setItem('page', pageNum)
+        }) ;
+        //下一页================================
+        $('#next').click(function () {
+            var pageNum = localStorage .getItem('page');
+            var lastPage = Number(localStorage .getItem("pageZ"));
+            pageNum++;
+            if (pageNum >= lastPage) {
+                pageNum = lastPage - 1;
+                layer.alert('已是最后一页');
+                return false
+            }
+            jiazai(pageNum);
+            localStorage .setItem('page', pageNum)
+        })  ;
+        //跳转页===================================
+        $('#goTo').click(function () {
+            var ye = $('#inputNum').val();
+            var lastPage = Number(localStorage .getItem("pageZ"));
+            if (!/^[1-9]\d*$/.test(ye)) {
+                layer.alert('请输入正整数');
+            } else {
+                if (ye > lastPage) {
+                    ye = lastPage;
+                }
+                jiazai(ye - 1);
+                localStorage.page = ye - 1;
+            }
+            $('#inputNum').val('');
+        })
+
+        $("#search input").on("keypress", function (event) {
+            if (event.keyCode == "13") {
+                $("#search input").blur();
+                jiazai(0)
+            }
+        });
+
+        $('.ti-search').click(function(){
+            jiazai(0)
+        })
+    });
+     //渲染数据
+    function getMsgStr(idName, data) {
+        var appendStr = "";
+        for (var i = 0; i < data.length; i++) {
+            switch (idName) {
+                case "bug":
+                    var name = "BUG";
+                    break;
+                case "demand":
+                    var name = "需求";
+                    break;
+            }
+            appendStr +=
+                    '<div class="msg">' +
+                    '<a href="html/detail.html?pk_support=' + data[i].pk_support + '" target="_blank">' +
+                    '<span class="title_C"><span class="title">大区:</span><span class="text">' + (data[i].areaname ? data[i].areaname : "") + '</span></span>'+
+                    '<p class="proName"><span class="title">项目名称:</span><span class="text">' + (data[i].projectname ? data[i].projectname : "") + '</span></p>' +
+                    '<p class="typeName"><span class="title">' + name + '名称:</span><span class="text titleName">' + (data[i].supportname ? data[i].supportname : "") + '</span></p>' +
+                    '<span class="title_D"><span class="title">领域:</span><span class="text">' + (data[i].field ? data[i].field : "") + '</span></span>' +
+                    '<span  class="title_E"><span class="title">录单时间:</span><span class="text">' + data[i].creationtime + '</span></span>' +
+                    '<span  class="title_G"><span class="title">解决人：</span><span class="text">' + (data[i].namemobile ? data[i].namemobile.split('（')[0] : "暂无") + '</span></span>' +
+                    '</a>' +
+                    (data[i].supportstatus == "已解决" ? '<span class="state">' + (data[i].supportstatus ? data[i].supportstatus : "") + '</span>' : "") +
+                    (data[i].supportstatus == "进行中" ? '<span class="state doing">' + (data[i].supportstatus ? data[i].supportstatus : "") + '</span>' : "") +
+                    (data[i].supportstatus == "未开始" ? '<span class=" notstart">' + (data[i].supportstatus ? data[i].supportstatus : "") + '</span>' : "") +
+                    '</div>';
+        }
+
+        return appendStr;
+    }
+
+
+
+</script>
+</body>
+</html>

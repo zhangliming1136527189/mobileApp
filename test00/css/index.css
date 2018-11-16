@@ -1,0 +1,734 @@
+*{
+    margin:0;
+    padding:0;
+    font-size:0.12rem;
+    font-family: "微软雅黑";
+}
+html{
+    height:100%;
+}
+body{
+    height:100%;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+hr{
+    border: none;
+    height: 1px;
+    background-color: #eee;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{height:1%;}
+#search input{
+    display: inline-block;
+    border-radius:0.05rem;
+    padding:0.07rem 0.35rem;
+    width:2.85rem;
+    border:1px solid #dcdcdc;
+    outline:medium;
+    background: url("../img/icon/icon_search.png") 0.1rem center no-repeat;
+    background-color: #dcdcdc;
+    margin:0.11rem 0;
+    margin-left:0.08rem;
+}
+#search input::-ms-input-placeholder{text-align: center;}
+#search input::-webkit-input-placeholder{text-align: center;font-size:0.12rem;}
+#search{
+    border-bottom:1px solid #dcdcdc;
+    z-index:200;
+    background-color: #fff;
+    position:relative;
+    width:100%;
+}
+#search .back{
+    font-size:0.16rem;
+    color:#00a2e8;
+    margin-left:0.05rem;
+    display: none;
+}
+.cover{
+    position:fixed;
+    height:100%;
+    width:100%;
+    background-color: #fff;
+    z-index:10;
+    top:0;
+    left:0;
+    display: none;
+}
+#show{
+    -webkit-overflow-scrolling : touch;
+    overflow: auto;
+    position: relative;
+}
+#show .loading,#show .noMore,#show .tip{
+    display: none;
+    position: fixed;
+    bottom:61px;
+    left:0;
+    width:100%;
+    height:0.35rem;
+    text-align:center;
+    background:#fff;
+    font-size:0.16rem;
+    color:#666;
+    line-height:0.35rem;
+}
+#show .show{
+    padding-bottom:0.34rem;
+    overflow-x: hidden;
+}
+
+#studyMain{
+    position:absolute;
+}
+.tab{
+    width:100%;
+}
+.hr{
+    background-color:#dcdcdc;
+    border:none;
+    height:1px;
+    width:100%;
+}
+.tab li{
+    color:#666;
+    display: inline-block;
+    text-align:center;
+    padding:0.10rem 0;
+    font-size:0.15rem;
+    font-family:"HiraginoSansGB-W3";
+}
+.tab li.active{
+    color:#00a2e8;
+    border-bottom:0.03rem solid #00a2e8;
+}
+.search{
+    -webkit-border-radius: 0.05rem;
+    border-radius:0.05rem;
+    padding:0.07rem 0;
+    width:94%;
+    border:1px solid #e8ecf1;
+    outline:medium;
+    background: url("../img/icon/icon_search.png") 1.45rem center no-repeat;
+    background-color: #e8ecf1;
+    margin:0.11rem 0;
+    margin-left:3%;
+}
+#main .hot_course+span{
+    font-size: 0.14rem;
+    line-height: 0.14rem;
+    color: #B3B3B3;
+    margin-left: 0.06rem;
+    margin-top: 0.07rem;
+    vertical-align: middle;
+    display: inline-block;
+}
+span.supportname:before,span.description:before,span.plantime:before{
+    content:"*";
+    color:red;
+}
+.msg{
+    border-bottom:1px solid #aaa;
+    padding:0.07rem 0.15rem 0.05rem;
+}
+.msg ul{
+    margin:0;
+    padding:0;
+}
+.msg li{
+    list-style:none;
+    display:inline-block;
+}
+.msg li:nth-of-type(1){
+    width:0.56rem;
+}
+.msg li:nth-of-type(2){
+    width:0.56rem;
+}
+.msg li:nth-of-type(3) i{
+    margin-right:0.02rem;
+}
+.msg li:nth-of-type(3) i:last-of-type{
+    margin-right:0;
+}
+.msg img{
+    width:1.46rem;
+    height:0.91rem;
+    display:inline-block;
+    vertical-align: top;
+    margin:0.12rem 0.08rem 0.12rem 0;
+}
+.msg{
+    position: relative;
+}
+.msg .state{
+    position: absolute;
+    top: 0.04rem;
+    right: 0.19rem;
+    display: inline-block;
+    padding: 0.04rem 0;
+    color:#00a51c;
+    width:0.7rem;
+    text-align: right;
+}
+.msg .state.doing{
+    color: red;
+}
+.msg .state.notStart{
+    color: #aaaaaa;
+}
+.msg span{
+    color:#2278d4;
+    font-size:0.13rem;
+    line-height: 0.19rem;
+    height:0.19rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.msg p:first-child span{
+    font-size: 0.17rem;
+    color: #292F33;
+    width:2rem;
+}
+.msg p:first-child .title{
+    width:0.8rem;
+}
+.msg .title{
+    width: 0.65rem;
+    color: #919191;
+}
+.msg .change{
+    position:absolute;
+    bottom:0.03rem;
+    right:0.17rem;
+    display: inline-block;
+    padding: 0.02rem 0.18rem;
+    border:1px solid #00a2e8;
+    -webkit-border-radius: 0.04rem;
+    -moz-border-radius: 0.04rem;
+    -ms-border-radius: 0.04rem;
+    -o-border-radius: 0.04rem;
+    border-radius: 0.04rem;
+    color:#292F33;
+}
+#add .title{
+    width:1rem;
+    display: inline-block;
+    margin-left:0.10rem;
+    vertical-align: top;
+}
+#add li{
+    list-style: none;
+    margin-top:0.08rem;
+}
+#add li *{
+    font-size:0.16rem;
+}
+#add input{
+    color:#145882;
+}
+#add input[name='plantime'],#add input[name='finishtime'],#add input[name='actualtime'],#add input[name='overtime']{
+    width:0.45rem;
+}
+#add input[type='radio']{
+    display: none;
+}
+#tab li{
+    margin:0;
+    height:0.18rem;
+    padding:0;
+    line-height: 0.18rem;
+    font-size:0.14rem;
+}
+#tab a{
+    font-size:0.16rem;
+}
+#tab{
+    background-color: #00a2e8;
+    color: white;
+    font-size: 0.13rem;
+    height:0.39rem;
+    padding-top:0.12rem;
+    padding-left:0.16rem;
+    position:relative;
+    z-index:100;
+}
+
+#tab ul{
+    width:3.44rem;
+    list-style: none;
+    border: 1px solid white;
+    -webkit-border-radius: 0.05rem;
+    -moz-border-radius: 0.05rem;
+    -ms-border-radius: 0.05rem;
+    -o-border-radius: 0.05rem;
+    border-radius: 0.05rem;
+}
+#tab ul li{
+    display: inline-block;
+    width:50%;
+    text-align:center;
+    padding:0.06rem 0;
+    color:white;
+}
+#tab li label{
+    font-size:0.16rem;
+}
+#tab ul li.active{
+    color:#00a2e8;
+    background-color: white;
+}
+#content{
+    overflow: auto;
+}
+#add select{
+    width:1.20rem;
+    color:#145882;
+}
+#add label{
+    height:100%;
+    width:100%;
+    display: inline-block;
+}
+#add textarea{
+    resize:none;
+    border:1px solid #a9a9a9;
+    padding:0.03rem 0;
+    width:2.3rem;
+    color:#145882;
+}
+#add button{
+    background-color: #00a2e8;
+    height:0.30rem;
+    line-height: 0.3rem;
+    text-align: center;
+    width:94%;
+    margin-left:3%;
+    color:#fff;
+    border:1px solid #00a2e8;
+    border-radius:0.05rem;
+    margin-top:0.2rem;
+    margin-bottom:0.2rem;
+    display: inline-block;
+}
+#add .time{
+    margin-left:0.10rem;
+    color:#145882;
+}
+#add .text{
+    color:#145882;
+}
+#upload{
+    display: inline-block;
+    padding:0.18rem;
+    text-align: center;
+    border:1px solid #919191;
+    margin-left:-0.05rem;
+}
+#add .list{
+    position: relative;
+    -webkit-overflow-scrolling : touch;
+    overflow: scroll;
+    height:100%;
+}
+#change .list{
+    position: relative;
+    -webkit-overflow-scrolling : touch;
+    overflow: scroll;
+    height:100%;
+}
+.img-chose{
+    display: inline-block;
+    vertical-align: top;
+}
+.img-box{
+    display: inline-block;
+    margin-right:0.1rem;
+    vertical-align: top;
+}
+.img-box img{
+    vertical-align: top;
+}
+.upload-notice{
+    margin-left:0.97rem;
+    color:#ff4444;
+    margin-top:0.05rem;
+}
+#change .title{
+    width:1rem;
+    display: inline-block;
+    margin-left:0.10rem;
+    vertical-align: top;
+}
+#change{
+    margin-top:-1px;
+    overflow: auto;
+}
+#change .list li{
+    list-style: none;
+    margin-top:0.08rem;
+}
+#change li *{
+    font-size:0.16rem;
+}
+#change input{
+    color:#145882;
+    border: 1px solid #a9a9a9;
+}
+#change .text{
+    color:#145882;
+}
+#change input[name='plantime'],#change input[name='finishtime'],#change input[name='actualtime'],#change input[name='overtime']{
+    width:0.45rem;
+}
+#change input[type='radio']{
+    display: none;
+}
+#change select{
+    width:1.20rem;
+    color:#145882;
+}
+#change label{
+    height:100%;
+    width:100%;
+    display: inline-block;
+}
+#change textarea{
+    resize:none;
+    border:1px solid #a9a9a9;
+    padding:0.03rem 0;
+    width:2.3rem;
+    color:#145882;
+}
+#add .button,#userRequirement .button{
+    background-color: #00a2e8;
+    height:0.30rem;
+    line-height: 0.3rem;
+    text-align: center;
+    width:94%;
+    margin-left:3%;
+    color:#fff;
+    border:1px solid #00a2e8;
+    border-radius:0.05rem;
+    margin-top:0.2rem;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+    font-size:16px;
+}
+#userRequirement .button{
+    width:92%;
+    margin-left:4%;
+}
+#change .button{
+    background-color: #00a2e8;
+    height:0.30rem;
+    line-height: 0.3rem;
+    text-align: center;
+    width:40%;
+    margin-left:8%;
+    color:#fff;
+    border:1px solid #00a2e8;
+    border-radius:0.05rem;
+    margin-top:0.2rem;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+}
+#change .delete{
+    background-color: #00a2e8;
+    height:0.30rem;
+    line-height: 0.3rem;
+    text-align: center;
+    width:40%;
+    margin-left:4%;
+    color:#fff;
+    border:1px solid #00a2e8;
+    border-radius:0.05rem;
+    margin-top:0.2rem;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+}
+#change .time{
+    margin-left:0.1rem;
+}
+#detail{
+    overflow: auto;
+}
+#detail ul{
+    margin:0.05rem 0.10rem;
+}
+.bigImg{
+    background:url("") center center no-repeat;
+    background-size: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: #000;
+    z-index:100;
+    display: none;
+    text-align: center;
+    line-height: 100%;
+}
+#detail .state{
+    color:#00a51c;
+    font-size: 0.16rem;
+}
+#detail .state.notStart{
+    color: #aaaaaa;
+}
+#detail li{
+    padding:0.07rem 0;
+}
+#detail .title{
+    width:1rem;
+    display: inline-block;
+    font-size:0.16rem;
+    vertical-align: top;
+}
+#detail .text{
+    width:2.5rem;
+    font-size:0.16rem;
+    display: inline-block;
+    color:#145882;
+}
+#detail img{
+    height:auto;
+    width:0.5rem;
+    margin-right:0.1rem;
+}
+#detail .doing{
+    color: red;
+}
+.sorry{
+    background: url("../img/sorry.png") center 1.10rem no-repeat;
+    width:100%;
+    background-size: 66% auto;
+}
+.sorry2{
+    text-align: center;
+    width:100%;
+    position: absolute;
+    bottom:30%;
+    color:#7d600a;
+    font-size:0.18rem;
+}
+#userRequirement{
+    overflow: auto;
+}
+#userRequirement .requirement{
+    margin:0.1rem 0.15rem 0;
+    border:1px solid #ccc;
+    border-radius: 4px;
+    padding:5px;
+    background-color: #eee;
+}
+#userRequirement .requirement .detail{
+    vertical-align: top;
+    font-size:0.14rem;
+    padding:0 5px;
+    border:1px solid #ccc;
+    outline:none;
+    border-radius:4px;
+    resize:none;
+    width: 2.4rem;
+    height: 1rem;
+    background-color: #fff;
+}
+#userRequirement .userInfo{
+    border:1px solid #ccc;
+    border-radius: 4px;
+    margin:0.10rem 0.15rem 0;
+    padding:5px;
+    position: relative;
+    background-color: #e4ebff;
+}
+#userRequirement .userInfo div{
+    margin-top:8px;
+}
+#userRequirement .userInfo div:first-child{
+    margin-top:0;
+}
+#userRequirement .userInfo .user{
+    height:0.22rem;
+    width:0.70rem;
+    border:1px solid #ccc;
+    outline:none;
+    border-radius:4px;
+    vertical-align: middle;
+    font-size:0.14rem;
+    padding:0 5px;
+}
+#userRequirement .userInfo .title,#userRequirement .requirement .title{
+    font-size:0.15rem;
+    vertical-align: middle;
+    display: inline-block;
+}
+#userRequirement .userInfo #fieldList{
+    display: none;
+}
+#userRequirement .userInfo .field{
+    display: inline-block;
+    list-style: none;
+    padding:3px 6px;
+    border:1px solid #ccc;
+    margin:3px;
+    vertical-align: middle;
+    border-radius: 3px;
+    background-color: #fff;
+    color:#000;
+}
+#userRequirement .userInfo .field.active{
+    border:1px solid red;
+}
+#userRequirement .userInfo .del{
+    display: inline-block;
+    width:0.18rem;
+    height:0.18rem;
+    background-color: #ff5858;
+    color:#FFF;
+    border-radius: 50%;
+    line-height: 0.18rem;
+    text-align: center;
+    position: absolute;
+    top:-6px;
+    right:-9px;
+    font-size:0.16rem;
+}
+#userRequirement .hr{
+    position: relative;
+    border-bottom:1px solid #ccc;
+    height:1px;
+    margin:0.20rem 0 0.20rem 0.15rem;
+    width:3.45rem;
+}
+#userRequirement .hr .add{
+    display: inline-block;
+    width:0.22rem;
+    height:0.22rem;
+    color:#fff;
+    background-color: #09dc06;
+    border-radius: 50%;
+    text-align: center;
+    line-height:0.22rem;
+    font-size:16px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+#userRequirement .clickMe{
+    display: inline-block;
+    vertical-align: top;
+    padding:2px 4px;
+    border:1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    max-width:2.3rem;
+    color:#aaa;
+}
+#userRequirement .clickMe p{
+    font-size:0.15rem;
+    margin:0 3px;
+}
+#ball{
+    height: 0.30rem;
+    width: 0.30rem;
+    border:5px solid rgba(150,150,150,0.8);
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    position: absolute;
+    top:2rem;
+    right:0;
+    -webkit-transition: transform 0.1s ease;
+    -moz-transition: transform 0.1s ease;
+    -ms-transition: transform 0.1s ease;
+    -o-transition: transform 0.1s ease;
+    transition: transform 0.1s ease;
+    z-index: 300;
+    text-align: center;
+    line-height: 0.34rem;
+    color:#fff;
+    font-size:0.26rem;
+    font-weight:bold;
+}
+.tips{
+    vertical-align: middle;
+    font-size:0.14rem;
+}
+#userRequirement #main{
+    overflow: hidden;
+}
+#footer{
+    position:relative;
+    bottom:0;
+    width:100%;
+    background-color: #fff;
+}
+#footer ul{
+    display:table;
+    width:100%;
+    text-align:center;
+    border-top:1px solid #b5b9bd;
+}
+#footer ul li{
+    height:0.60rem;
+    width:25%;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+    font-size:0.10rem;
+    color:#919191;
+}
+#footer ul i{
+    font-size:0.20rem;
+    color:#919191;
+}
+#footer ul li.active i{
+    color: #00a2e8;
+}
+#footer ul li.active div{
+    color: #00a2e8;
+}
+.icon_close{
+    width:16px;
+    height:16px;
+    display: inline-block;
+    position: absolute;
+    top: 0.19rem;
+    right: 0.65rem;
+    background-color: #aaa;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    line-height: 16px;
+    text-align: center;
+    color:#fff;
+    display: none;
+}
+.close{
+    width:16px;
+    height:16px;
+    display: inline-block;
+    background-color: #aaa;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    line-height: 16px;
+    text-align: center;
+    color:#fff;
+}
+.ti-pin-alt{
+    position: absolute;
+    top: 0.12rem;
+    right: 0.63rem;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>订单查询</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="../js/saleorder_list.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../css/saleorder.css">
+		<script>
+			function forSaleCard(hid) {
+				window.open("saleorder_card.html?hid=" + hid, '_self')
+			} 
+		</script> 
+	</head>
+ 
+	<body>                    
+
+		<section class="list-wrap">
+			<div id="">
+				<input id="search-text" placeholder="查询条件" class="search-box" type="text">
+			<span class="list-count"></span>
+			</div>
+			   
+			<div id="list">  
+			 
+			</div> 
+     
+		</section>
+	</body>
+
+</html>

@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+}
+html,body,div,p,span,ul,li,a{
+    box-sizing:border-box;
+}
+#rankingTitle{
+    width: 100%;
+    height: 70px;
+    background: deepskyblue;
+    text-align: center;
+    line-height: 70px;
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: 30px;
+    font-family: cursive;
+}
+#rankingDom{
+    width: 1008px;
+    position: relative;
+    left: 50%;
+    margin-left: -465px;
+    margin-top: 30px;
+    background: #fff;
+}
+#rankingDom .rankingCon{
+    overflow:hidden;
+    border:1px solid #cacaca;
+}
+#rankingDom .rankingTop{
+    border-bottom: 2px solid #cacaca;
+    height: 39px;
+    background-color: #e5e5e5;
+}
+#rankingDom .rankingHead{
+    display:inline-block;
+    border-right:1px solid #cacaca;
+    width:160px;
+    height:40px;
+    text-align:center;
+    line-height:40px;
+    cursor:pointer;
+    position:relative;
+    color: #f2621a;
+    　-moz-user-select: none; /*火狐*/
+
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+#rankingDom .rankingHead:last-child{
+    border:none;
+}
+#rankingDom .rankingHead:first-child{
+    width:200px;
+}
+#rankingDom #rankingBodyBox{
+    height:500px;
+    overflow:auto;
+}
+#rankingDom #rankingBody{
+    width:100%;
+    overflow:hidden;
+}
+#rankingDom .bodyList{
+    border-bottom:1px solid #cacaca;
+    height:30px;
+}
+#rankingDom .bodyList span{
+    display:inline-block;
+    width:160px;
+    height:30px;
+    text-align:center;
+    color: #333;
+    line-height:30px;
+    border-right:1px solid #cacaca;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#rankingDom .bodyList .bodyprojectname{
+    width:200px;
+}
+#rankingDom .bodyList span:last-child{
+    border:none;
+    width:148px;
+}
+#rankingDom .sortIcon{
+    position:absolute;
+    width:16px;
+    height:16px;
+    right:1px;
+    top:11px;
+    display:none;
+}
+#rankingDom .sortUp{
+    display:block;
+    background:url("../img/up.svg") no-repeat;
+    background-size:100%;
+}
+#rankingDom .sortDown{
+    display:block;
+    background:url("../img/down.svg") no-repeat;
+    background-size:100%;
+}

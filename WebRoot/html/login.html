@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="../css/font-icons.css"/>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../js/jquery.placeholder.js"></script>
+    <script src="../js/layer/layer.js"></script>
+</head>
+<body>
+<div id="login-page">
+    <div id="login-header">NC双百登录系统</div>
+    <div id="login-content">
+        <div id="login-inner">
+            <p id="manage"><span><img src="../img/head.gif"/></span><span>管理登录</span></p>
+            <p id="username-wrap"><span class="ti-user"></span>&nbsp;<input type="text" placeholder="用户名" value="" id="username"/><span id="phoneTips"></span>
+            </p>
+            <p id="password-wrap"><span class="ti-lock"></span>&nbsp;<input type="password" placeholder="密码" value="" id="password"/><span
+                    id="passwordTips"></span></p>
+            <p id="forget-password"><a href="#" id="forget-password-inner">忘记密码</a></p>
+            <p id="loginTips"></p>
+            <button id="login-button">登录</button>
+        </div>
+        <div id="find-password-page" style="display:none;">
+            <div id="find-header">
+                <span id="find-title">找回密码</span><span id="close"></span>
+            </div>
+            <div id="find-steps">
+                <ul>
+                   
+                    <li id="bottom-half"><span>1.填写信息</span><span>2.填写验证码</span><span>3.重置密码</span><span>4.完成</span></li>
+                   
+                </ul>
+
+            </div>
+            <p id="find-direction">输入要找回的用户和用户邮箱，点击“下一步”将向邮箱发送验证码</p>
+            <div id="find-content">
+                <div id="find-content-inner" style="display:none;">
+                    <p id="find-username-wrap"><span>用户名</span>&nbsp;<input type="text" placeholder=""
+                                                                            id="find-username"><span
+                            class="phoneTips"></span></p>
+                    <p id="find-email-wrap"><span>邮&nbsp;&nbsp;箱</span>&nbsp;&nbsp;<input type="text" placeholder=""
+                                                                              id="find-email"><span
+                            class="emailTips"></span></p>
+                    <p id="infoTips"></p>
+                    <div id="find-footer">
+                        <ul id="button-list">
+                            <li>
+                                <button id="once-step" style="display:inline-block;width:60px;">下一步</button>
+                            </li>
+                            <li>
+                                <button id="cancle" style="display:inline-block;width:60px;">取消</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="identifying-wrap" style="display:none;">
+                    <p id="time-direction"></p>
+                    <p id="identifying-inner"><span>验证码</span>&nbsp;<input type="text" id="identifying-code"/>&nbsp;<input type="button" id="btn" value="重新获取" onclick="settime(this)"/></p>
+                    <p id="codeTips"></p>
+                    <div id="identifying-footer">
+                        <ul id="identifying-list">
+                            <li>
+                                <button id="next-step" style="display:inline-block;width:60px;">下一步</button>
+                            </li>
+                            <li>
+                                <button id="next-cancle" style="display:inline-block;width:60px;">取消</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="reset-password-page">
+                    <p id="new-password-wrap"><span>新&nbsp;密&nbsp;码&nbsp;</span><input type="password" id="new-password" value=""/><span id="new-errors"></span></p>
+                    <p id="confirm-password-wrap"><span>确认密码</span><input type="password" id="confirm-password" value=""/><span id="error-password"></span></p>
+                    <p id="password-infor"></p>
+                    <div id="reset-footer">
+                        <ul id="reset-list">
+                            <li>
+                                <button id="reset-step" style="display:inline-block;width:60px;">下一步</button>
+                            </li>
+                            <li>
+                                <button id="reset-cancle"  style="display:inline-block;width:60px;">取消</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/login.js"></script>
+
+</body>
+</html>

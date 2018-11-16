@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+        }
+
+        .info-text{
+            width: 100%;
+            text-align: center;
+            margin-top: 45%;
+            color: #4e4e4e;
+            font-size: 1.5em;
+        }
+        .info-text img{
+            vertical-align: middle;
+        }
+
+        .emailUp{
+            width: 250px;
+            height: auto;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+        .emailUp input[type='email']{
+            width: 160px;
+            height: 30px;
+            float: left;
+            border-radius: 4px 0 0 4px;
+            border-style: none;
+            border: 1px solid #ccc;
+            padding-left: 5px;
+        }
+        .emailUp .upData{
+            border: none;
+            padding: 0 8px;
+            border-radius: 0 4px 4px 0;
+            float: left;
+            /*width: 70px;*/
+            height: 32px;
+            line-height: 32px;
+            font-size: 16px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #003399;
+        }
+        .prompt{
+            width: 200px;
+            height: auto;
+            position: absolute;
+            left:50%;
+            top:40%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 5px;
+        }
+        .prompt .prompt-content{
+            color: #ffffff;
+            padding: 10px 10px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+
+    <div class="content">
+        <div class="info-text">
+            <img src="images/warning.png" alt="" width="40"/>
+            请验证您的邮箱！
+        </div>
+        <div class="emailUp">
+            <form  method="get" >
+                <input type="email" placeholder="用友邮箱@yonyou.com" name="email"/>
+                <input class="upData" type="button" value="邮箱验证" name="submit">
+            </form>
+        </div>
+    </div>
+    <div class="prompt">
+        <div class="prompt-content">
+
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $('.upData').click(function(){
+        var emailText = $('input[type="email"]').val();
+        var userName = emailText.slice(0,(emailText.length-11));
+//        console.log('邮箱为：'+emailText+'  '+'用户名为：'+userName);
+        var yonyou = emailText.slice((emailText.length-11),emailText.length);
+//        console.log(yonyou);
+//        判断是否为用友邮箱后缀
+        if(yonyou == '@yonyou.com'){
+            $.ajax({
+                url:'http://123.103.9.198:8901/fiwechat/SearchCardQuery',// 跳转到 action
+                data:{
+                    email : emailText,
+                    username : userName
+                },
+                type:'get',
+                dataType:'json',
+                success:function(data) {
+                    if(data.msg =="true" ){
+                        // view("修改成功！");
+                        promptInfo('验证成功！');
+                        setTimeout(promptTime,1000);
+                        setTimeout(goIndex,2000);
+                    }else{
+                        promptInfo('未知用户邮箱，请先确认您的邮箱地址！');
+                        setTimeout(promptTime,1000);
+                        $('input[type="email"]').val('');
+                    }
+                },
+                error : function() {
+                    promptInfo('网络异常！');
+                    setTimeout(promptTime,1000);
+                }
+            });
+        }else{
+            promptInfo('请输入正确的用友邮箱！');
+            setTimeout(promptTime,1000);
+            $('input[type="email"]').val('');
+        }
+    });
+//    提示框显示
+    function promptInfo(info){
+        $('.prompt-content').text("").css('display','block').text(info);
+    }
+//    提示框隐藏
+    function promptTime(){
+        $('.prompt-content').css('display','none');
+    }
+//    跳转页面
+    function goIndex(){
+        window.location.href="http://www.baidu.com";
+    }
+</script>
+</html>
